@@ -1,0 +1,118 @@
+{
+  "name": "GreenWash-Screener 4-Pillar Greenwashing Taxonomy",
+  "version": "1.0",
+  "description": "Evaluation criteria used by the hybrid LLM + rule-based engine. Every pillar is scored as a RISK from 0 (fully substantiated) to 100 (pure greenwashing). The claim risk is the weighted sum of the four pillar risks.",
+  "classification_thresholds": {
+    "legit": {"min": 0, "max": 30, "label": "Legit / Verified", "emoji": "🟢"},
+    "grey": {"min": 31, "max": 70, "label": "Grey Zone / Incomplete", "emoji": "🟡"},
+    "bullshit": {"min": 71, "max": 100, "label": "High Greenwashing Risk / Bullshit", "emoji": "🔴"}
+  },
+  "pillars": {
+    "quantification": {
+      "name": "Quantification Test",
+      "subtitle": "Vagueness vs. Hard Metrics",
+      "weight": 0.30,
+      "question": "Is the claim backed by specific figures with physical units, or does it rely on vague buzzwords?",
+      "high_risk_definition": "Uses vague buzzwords (eco-friendly, green, sustainable leader, climate conscious) without numerical metrics or units.",
+      "legit_definition": "Contains specific figures and units (tCO2e, MWh, %, GJ, m3, megalitres) with a reference period.",
+      "rubric": {
+        "0-20": "Absolute and relative figures with units, reporting period and comparison to prior year.",
+        "21-50": "Some figures but missing units, period or absolute values (intensity-only).",
+        "51-80": "Mostly qualitative with a single unanchored number.",
+        "81-100": "Purely qualitative marketing language."
+      },
+      "regulatory_basis": ["GRI 305-1 to 305-5", "IFRS S2 para 29(a)", "EU Directive 2024/825 generic claims ban"],
+      "lexicon": {
+        "vague_terms": ["eco-friendly", "eco friendly", "environmentally friendly", "green", "greener", "sustainable leader", "sustainability leader", "climate conscious", "climate-conscious", "planet-friendly", "planet friendly", "nature-positive", "nature positive", "clean", "responsible", "conscious", "committed to the planet", "earth-friendly", "carbon friendly", "climate friendly", "climate-friendly", "natural", "pioneer", "pioneering", "leading", "world-class", "best-in-class", "holistic", "innovative", "innovation", "harmony", "aspire", "aspiration", "strive", "journey", "passionate", "care for the planet", "green dna", "100% sustainable", "zero impact", "eco-conscious"],
+        "metric_units": ["tco2e", "tco2", "mtco2e", "ktco2e", "tonnes", "tons", "metric tons", "mwh", "gwh", "twh", "kwh", "gj", "tj", "pj", "m3", "m³", "megalitres", "megaliters", "ml", "cubic meters", "%", "percent", "kg", "usd", "nt$", "million", "billion"]
+      }
+    },
+    "trajectory": {
+      "name": "Trajectory & Roadmap Test",
+      "subtitle": "Timeline & Baseline",
+      "weight": 0.25,
+      "question": "Does a forward-looking claim have a base year, interim milestones, an action/CAPEX plan or third-party (SBTi) validation?",
+      "high_risk_definition": "Long-term target (e.g., Net-Zero by 2050) with no baseline year, no interim target (e.g., 2030) and no CAPEX or action plan.",
+      "legit_definition": "Clear baseline year, short-to-medium term milestones, CAPEX plan, or SBTi validation.",
+      "rubric": {
+        "0-20": "SBTi-validated near-term and long-term targets, base year, annual progress tracking.",
+        "21-50": "Base year and interim target but no validation or resourcing evidence.",
+        "51-80": "Target year only, or interim target without base year.",
+        "81-100": "Distant aspiration (2040-2060) with no base year, no milestones and no plan."
+      },
+      "regulatory_basis": ["IFRS S2 para 33-36", "TCFD Metrics & Targets", "SBTi Corporate Net-Zero Standard", "ESRS E1-1 and E1-4"],
+      "lexicon": {
+        "baseline_terms": ["baseline", "base year", "base-year", "compared to", "compared with", "relative to", "versus", "vs.", "from a 20", "levels", "against 20"],
+        "validation_terms": ["sbti", "science based targets", "science-based target", "validated by the science", "1.5°c", "1.5 °c", "1.5c", "well-below 2"],
+        "action_terms": ["capex", "capital expenditure", "investment of", "invest ", "invested", "budget", "power purchase agreement", "ppa", "abatement", "roadmap", "transition plan", "decarbonization plan", "internal carbon price", "carbon fee"],
+        "aspiration_terms": ["aspire", "aspiration", "aim to", "ambition", "strive", "hope", "envision", "committed to becoming", "pledge", "journey"]
+      }
+    },
+    "scope": {
+      "name": "Scope & Materiality Test",
+      "subtitle": "Cherry-Picking vs. Full Scope",
+      "weight": 0.25,
+      "question": "Does the claim cover material emissions (Scope 1, 2 and material Scope 3 categories) as required by SASB/ISSB, or does it highlight marginal initiatives?",
+      "high_risk_definition": "Highlights marginal initiatives (solar panels on HQ cafeteria, plastic-free office) while omitting material Scope 1, 2 and especially Scope 3 supply-chain emissions.",
+      "legit_definition": "Explicitly covers Scope 1, Scope 2 and material Scope 3 categories with organizational boundary.",
+      "rubric": {
+        "0-20": "Scope 1, 2 and material Scope 3 categories (e.g., Cat. 1, Cat. 11) quantified; boundary stated.",
+        "21-50": "Scope 1 and 2 covered; Scope 3 partial or only qualitative.",
+        "51-80": "Single scope or single site; material sources (PFCs, supply chain) omitted.",
+        "81-100": "Marginal, non-material initiative presented as climate leadership."
+      },
+      "regulatory_basis": ["SASB TC-SC-110a.1", "GRI 305-3", "IFRS S2 para 29(a)(vi)", "GHG Protocol Scope 3 Standard"],
+      "lexicon": {
+        "scope_terms": {"scope 1": ["scope 1", "scope i ", "direct emissions"], "scope 2": ["scope 2", "scope ii ", "indirect emissions from purchased", "market-based", "location-based"], "scope 3": ["scope 3", "scope iii", "value chain", "supply chain emissions", "category 1", "category 11", "upstream", "downstream", "purchased goods", "use of sold products", "suppliers' emissions"]},
+        "material_sources": ["pfc", "perfluorinated", "fluorinated", "f-gas", "nf3", "sf6", "process gases", "fab", "fabs", "manufacturing", "data center", "data centres", "all operations", "global operations", "entire value chain", "company-wide", "group-wide"],
+        "marginal_initiatives": ["cafeteria", "canteen", "headquarters", "hq", "office", "offices", "plastic-free", "plastic free", "straws", "paper cups", "paperless", "tree planting", "trees planted", "planted trees", "beach clean", "employee volunteer", "volunteering", "led lighting", "led bulbs", "bike", "bicycle", "rooftop", "earth hour", "reusable", "tote bag", "green day", "lobby", "garden", "a single"]
+      }
+    },
+    "assurance": {
+      "name": "External Assurance & Standard Alignment Test",
+      "subtitle": "Verification",
+      "weight": 0.20,
+      "question": "Is the claim mapped to a specific standard indicator and backed by independent third-party assurance?",
+      "high_risk_definition": "Self-declared achievement with zero reference to GRI/SASB/TCFD/ISSB codes or third-party assurance.",
+      "legit_definition": "Mapped to specific standard indicators (e.g., GRI 305-1, TCFD Metrics) and backed by limited or reasonable assurance from a recognised provider.",
+      "rubric": {
+        "0-20": "Reasonable assurance (or limited assurance by Big Four / accredited body) explicitly covering the metric, plus standard code mapping.",
+        "21-50": "Standard mapping present, or general assurance statement not clearly covering the metric.",
+        "51-80": "Generic reference to 'international standards' without codes or assurer.",
+        "81-100": "Self-declared, unverifiable, internal-only claim."
+      },
+      "regulatory_basis": ["GRI 2-5", "ISAE 3000 / ISAE 3410", "ISSA 5000", "CSRD mandatory limited assurance"],
+      "lexicon": {
+        "assurers": ["deloitte", "pwc", "pricewaterhousecoopers", "kpmg", "ernst & young", " ey ", "sgs", "dnv", "bureau veritas", "bsi", "tüv", "tuv", "lrqa", "lloyd's register", "apave", "intertek"],
+        "assurance_terms": ["limited assurance", "reasonable assurance", "independently verified", "independent verification", "third-party verified", "third-party assurance", "externally assured", "assured by", "verified by", "isae 3000", "isae 3410", "issa 5000", "aa1000", "iso 14064-3", "iso 14064"],
+        "standard_patterns": ["gri\\s?\\d{3}(-\\d+)?", "gri 2-5", "tc-[a-z]{2}-\\d{3}a\\.\\d", "sasb", "tcfd", "issb", "ifrs s1", "ifrs s2", "csrd", "esrs e1", "cdp", "ghg protocol", "iso 14001", "iso 50001", "iso 14064(-\\d)?", "iso 14068"]
+      }
+    }
+  },
+  "terrachoice_seven_sins_mapping": {
+    "Sin of the Hidden Trade-off": "scope",
+    "Sin of No Proof": "assurance",
+    "Sin of Vagueness": "quantification",
+    "Sin of Worshipping False Labels": "assurance",
+    "Sin of Irrelevance": "scope",
+    "Sin of Lesser of Two Evils": "scope",
+    "Sin of Fibbing": "assurance"
+  },
+  "examples": [
+    {
+      "claim": "We aspire to become carbon neutral by 2050 through eco-friendly innovation.",
+      "expected_class": "bullshit",
+      "why": "Vague buzzwords, distant aspiration, no baseline, no scope, no assurance."
+    },
+    {
+      "claim": "Scope 1 and 2 emissions fell 18% to 9.8 million tCO2e versus our 2020 base year (market-based), verified with limited assurance by DNV under ISO 14064-3; our SBTi-validated 2030 target is -42%.",
+      "expected_class": "legit",
+      "why": "Quantified, base year, interim SBTi target, explicit scopes, third-party assurance."
+    },
+    {
+      "claim": "Our headquarters cafeteria is now powered by rooftop solar panels and is 100% plastic-free.",
+      "expected_class": "bullshit",
+      "why": "Marginal, non-material initiative presented as climate leadership (cherry-picking)."
+    }
+  ]
+}

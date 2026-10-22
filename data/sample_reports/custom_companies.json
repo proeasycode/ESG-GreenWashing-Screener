@@ -1,0 +1,857 @@
+[
+  {
+    "company": "Apple Inc.",
+    "ticker": "UPLOAD",
+    "country": "-",
+    "sector": "Consumer Hardware & Tech",
+    "report_title": "Apple_Environmental_Progress_Report_2026.pdf",
+    "report_year": "-",
+    "pages": 113,
+    "assurance_provider": "Ernst & Young",
+    "assurance_level": "Reasonable",
+    "scope3_completeness": 45,
+    "marketing_claim_volume": 305,
+    "green_buzzword_density": 7.69,
+    "standard_alignment": {
+      "GRI": 0,
+      "SASB": 0,
+      "TCFD": 0,
+      "ISSB": 0,
+      "CSRD": 0
+    },
+    "source": "live",
+    "greenwashing_risk_index": 57.4,
+    "total_claims": 18,
+    "legit_claim_ratio": 0.278,
+    "grey_claim_ratio": 0.333,
+    "red_flag_ratio": 0.389,
+    "mean_claim_risk": 62.1,
+    "pillar_risk": {
+      "quantification": 58.8,
+      "trajectory": 54.6,
+      "scope": 60.7,
+      "assurance": 78.0
+    },
+    "pillar_strength": {
+      "quantification": 41.2,
+      "trajectory": 45.4,
+      "scope": 39.3,
+      "assurance": 22.0
+    },
+    "walk_score": 36.6,
+    "talk_score": 305,
+    "claims": [
+      {
+        "claim_id": "C02",
+        "page": 3,
+        "claim_text": "Apple aims to achieve carbon neutrality across its entire carbon footprint by 2030 through its Apple 2030 initiative.",
+        "claim_category": "Net-Zero & Targets",
+        "pillar_scores": {
+          "quantification": 70.5,
+          "trajectory": 58.4,
+          "scope": 49,
+          "assurance": 85.5
+        },
+        "pillar_rationales": {
+          "quantification": "The target year 2030 is stated, but the claim lacks absolute emission baseline figures, target reduction volumes in tCO2e, and residual offsetting limits.",
+          "trajectory": "The claim specifies a target deadline of 2030 but provides no baseline year, interim milestones, or validated decarbonization roadmap within the text.",
+          "scope": "Stating coverage across the 'entire footprint' implies Scope 1, Scope 2, and material Scope 3 value chain emissions, but lacks explicit boundary and category disaggregation.",
+          "assurance": "The target commitment is self-declared within marketing text with no mention of independent assurance or third-party validation such as SBTi."
+        },
+        "matched_standard": "IFRS S2 para 33-36",
+        "retrieved_standards": [
+          "GRI: GRI 2-5 External Assurance (0.32)",
+          "Taxonomy: Pillar - External Assurance & Standard Alignment Test (0.23)",
+          "ISSB: IFRS S2 Climate-related Targets (Paragraphs 33-36) (0.18)",
+          "ISSB: IFRS S2 Climate-related Disclosures: GHG Emissions (Paragraph 29) (0.17)"
+        ],
+        "audit_justification": "The claim states a high-level net-zero objective for 2030 covering Apple's full footprint. However, under IFRS S2 paragraphs 33-36, climate targets must disclose base periods, interim milestones, targeted physical metrics, and reliance on carbon offsets. Without disclosing these underlying parameters directly, the forward-looking neutrality claim carries high substantiation risk.",
+        "engine": "Google Gemini + rules",
+        "risk_score": 65.1,
+        "classification": "grey",
+        "badge": "🟡 Grey Zone"
+      },
+      {
+        "claim_id": "C03",
+        "page": 3,
+        "claim_text": "Apple progressed toward its Apple 2030 goals by reducing emissions, expanding clean electricity, and incorporating recycled and renewable materials in products and packaging.",
+        "claim_category": "Renewable Energy",
+        "pillar_scores": {
+          "quantification": 87.2,
+          "trajectory": 65.4,
+          "scope": 63,
+          "assurance": 89
+        },
+        "pillar_rationales": {
+          "quantification": "The claim uses purely qualitative marketing terms such as 'exciting progress' and 'greatest impact' without single figures, baseline data, or physical units.",
+          "trajectory": "Progress toward the 2030 goal is asserted for 'this year' without disclosing comparative performance metrics against a formal milestone trajectory.",
+          "scope": "Broad operational themes are listed (clean electricity, materials), but the statement fails to delineate operational versus value chain Scope 3 boundaries.",
+          "assurance": "The statement represents an internal executive narrative with no standard disclosure codes or third-party assurance references."
+        },
+        "matched_standard": "GRI 305-3",
+        "retrieved_standards": [
+          "GRI: GRI 2-5 External Assurance (0.28)",
+          "GRI: GRI 305-2 Energy Indirect (Scope 2) GHG Emissions (0.20)",
+          "Taxonomy: Pillar - External Assurance & Standard Alignment Test (0.20)",
+          "GRI: GRI 305-3 Other Indirect (Scope 3) GHG Emissions (0.17)"
+        ],
+        "audit_justification": "Executive commentary highlighting progress across clean electricity and recycled packaging constitutes descriptive narrative rather than auditable reporting. Under GRI and ISSB standards, progress must be anchored to concrete year-over-year operational metrics and standard indicators. The lack of numeric data makes the claim unverifiable in its present form.",
+        "engine": "Google Gemini + rules",
+        "risk_score": 76.1,
+        "classification": "bullshit",
+        "badge": "🔴 Bullshit"
+      },
+      {
+        "claim_id": "C04",
+        "page": 3,
+        "claim_text": "Apple maintained its greenhouse gas emissions at more than 60 percent below 2015 levels despite business growth.",
+        "claim_category": "GHG Emissions",
+        "pillar_scores": {
+          "quantification": 37.1,
+          "trajectory": 25.5,
+          "scope": 52.5,
+          "assurance": 76
+        },
+        "pillar_rationales": {
+          "quantification": "The claim specifies a relative reduction metric (more than 60 percent) against a defined base year (2015), but omits absolute emissions figures in tCO2e.",
+          "trajectory": "The statement provides a clear base year (2015) and tracks ongoing performance against it, though it lacks future interim milestone context.",
+          "scope": "Aggregated greenhouse gas emissions are claimed, but the text does not disclose the breakdown between Scope 1, Scope 2, and material Scope 3 categories.",
+          "assurance": "The historical reduction claim does not cite a specific assurance statement, assurance provider, or standard code indicator."
+        },
+        "matched_standard": "IFRS S2 para 29",
+        "retrieved_standards": [
+          "GRI: GRI 2-5 External Assurance (0.32)",
+          "Taxonomy: Pillar - External Assurance & Standard Alignment Test (0.23)",
+          "GRI: GRI 305-3 Other Indirect (Scope 3) GHG Emissions (0.17)",
+          "SBTi / GHG Protocol: GHG Protocol Scope Definitions (0.15)"
+        ],
+        "audit_justification": "Apple provides a clear percentage reduction benchmarked against a 2015 base year. Nonetheless, IFRS S2 paragraph 29 and GRI 305 require gross absolute emissions in metric tonnes of CO2 equivalent disaggregated by Scope 1, Scope 2 (market- and location-based), and Scope 3 categories. Without explicit scoping details and external verification citations, assurance risk remains elevated.",
+        "engine": "Google Gemini + rules",
+        "risk_score": 45.8,
+        "classification": "legit",
+        "badge": "🟢 Legit"
+      },
+      {
+        "claim_id": "C05",
+        "page": 5,
+        "claim_text": "Apple achieved 100% of its target to increase supplier participation in its Clean Water Program targeting a 50% reuse rate by 2030, and reached 43% progress toward increasing corporate waste diversion.",
+        "claim_category": "Net-Zero & Targets",
+        "pillar_scores": {
+          "quantification": 29,
+          "trajectory": 37.4,
+          "scope": 42,
+          "assurance": 69
+        },
+        "pillar_rationales": {
+          "quantification": "Quantitative completion percentages (100%, 43%) and a target water reuse rate (50%) are provided, though absolute water volumes and waste tonnage are omitted.",
+          "trajectory": "The claim delineates target years (2030) and status indicators ('ACHIEVED', 'IN PROGRESS'), though interim milestone baselines are omitted.",
+          "scope": "The initiatives define specific boundaries covering supply chain water in high-stress areas and corporate facility waste diversion.",
+          "assurance": "The disclosure references an internal footnote indicator (11) but provides no external assurance provider or accredited certification standard details."
+        },
+        "matched_standard": "SASB TC-SC-140a.1",
+        "retrieved_standards": [
+          "GRI: GRI 2-5 External Assurance (0.28)",
+          "Taxonomy: Pillar - External Assurance & Standard Alignment Test (0.21)",
+          "GRI: GRI 302 Energy and GRI 303 Water (Companion Standards) (0.18)",
+          "SASB: SASB Water Stress and Taiwan Fab Context (0.16)"
+        ],
+        "audit_justification": "The statement provides actionable quantitative performance metrics across supply chain water stewardship and corporate waste diversion. It aligns well with SASB and GRI 303 priority areas by explicitly prioritizing high water-stress supplier regions. However, compliance requires reporting physical volumes (megalitres and metric tonnes) alongside third-party assurance verification.",
+        "engine": "Google Gemini + rules",
+        "risk_score": 42.4,
+        "classification": "legit",
+        "badge": "🟢 Legit"
+      },
+      {
+        "claim_id": "C07",
+        "page": 7,
+        "claim_text": "The company aims to reduce greenhouse gas emissions by 75 percent compared to a 2015 baseline before balancing residual emissions using nature-based solutions adhering to international standards.",
+        "claim_category": "GHG Emissions",
+        "pillar_scores": {
+          "quantification": 40.6,
+          "trajectory": 39.5,
+          "scope": 63,
+          "assurance": 69
+        },
+        "pillar_rationales": {
+          "quantification": "The claim specifies a 75 percent reduction against a 2015 baseline, but omits a target completion year, absolute metrics in tCO2e, and the volume of residual emissions to be balanced.",
+          "trajectory": "A 2015 baseline year is established, but the claim lacks an explicit target completion deadline, interim milestones, or formal SBTi validation.",
+          "scope": "The claim broadly cites 'greenhouse gas emissions' without defining organizational boundaries or verifying inclusion of material Scope 3 value-chain categories.",
+          "assurance": "The claim references adherence to 'rigorous international standards' for nature-based solutions generically, without citing specific standard codes or an assurance provider."
+        },
+        "matched_standard": "IFRS S2 paragraphs 33-36",
+        "retrieved_standards": [
+          "GRI: GRI 2-5 External Assurance (0.32)",
+          "Taxonomy: Pillar - External Assurance & Standard Alignment Test (0.25)",
+          "GRI: GRI 305-3 Other Indirect (Scope 3) GHG Emissions (0.17)",
+          "SBTi / GHG Protocol: GHG Protocol Scope Definitions (0.16)"
+        ],
+        "audit_justification": "The claim specifies a quantified 75 percent reduction against a baseline year and acknowledges the necessity of balancing remaining emissions. However, it lacks a target end-year, absolute emissions metrics, and defined emissions scopes. Relying on unquantified nature-based offsets without specific standard mappings introduces moderate greenwashing risk.",
+        "engine": "Google Gemini + rules",
+        "risk_score": 51.6,
+        "classification": "grey",
+        "badge": "🟡 Grey Zone"
+      },
+      {
+        "claim_id": "C08",
+        "page": 7,
+        "claim_text": "The company aims to responsibly source recycled and renewable materials, manufacture durable products, and enhance material recovery.",
+        "claim_category": "Renewable Energy",
+        "pillar_scores": {
+          "quantification": 81,
+          "trajectory": 82.5,
+          "scope": 77,
+          "assurance": 89
+        },
+        "pillar_rationales": {
+          "quantification": "The statement relies exclusively on qualitative marketing terms such as 'responsibly source' and 'durable' without disclosing quantitative metrics or physical units.",
+          "trajectory": "No baseline year, target deadlines, interim delivery milestones, or capital expenditure roadmaps are provided.",
+          "scope": "The claim cites broad circularity concepts across materials and products without delineating operational or lifecycle boundaries.",
+          "assurance": "The assertion is completely self-declared with zero reference to reporting indicators or independent third-party assurance."
+        },
+        "matched_standard": "GRI 2-5",
+        "retrieved_standards": [
+          "GRI: GRI 2-5 External Assurance (0.28)",
+          "GRI: GRI 305-2 Energy Indirect (Scope 2) GHG Emissions (0.21)",
+          "Taxonomy: Pillar - External Assurance & Standard Alignment Test (0.20)",
+          "GRI: GRI 305-3 Other Indirect (Scope 3) GHG Emissions (0.17)"
+        ],
+        "audit_justification": "This claim consists entirely of unanchored qualitative intentions regarding materials, product durability, and circularity. Without measurable KPIs, clear baseline figures, or independent assurance, it represents high greenwashing risk.",
+        "engine": "Google Gemini + rules",
+        "risk_score": 82,
+        "classification": "bullshit",
+        "badge": "🔴 Bullshit"
+      },
+      {
+        "claim_id": "C09",
+        "page": 9,
+        "claim_text": "The company is directing its efforts toward decarbonizing the largest sources of its CO2e emissions.",
+        "claim_category": "GHG Emissions",
+        "pillar_scores": {
+          "quantification": 81,
+          "trajectory": 73,
+          "scope": 73.5,
+          "assurance": 89
+        },
+        "pillar_rationales": {
+          "quantification": "The assertion provides no figures, units, or percentages to identify or quantify the sources of emissions.",
+          "trajectory": "No target timeline, baseline year, intermediate checkpoints, or actionable resourcing plans are presented.",
+          "scope": "The claim references 'largest sources' vaguely without explicitly identifying or disclosing material Scope 1, 2, or Scope 3 categories.",
+          "assurance": "The statement is an unsubstantiated internal claim with no standard alignment or third-party audit verification."
+        },
+        "matched_standard": "GRI 305-3",
+        "retrieved_standards": [
+          "GRI: GRI 2-5 External Assurance (0.36)",
+          "Taxonomy: Pillar - External Assurance & Standard Alignment Test (0.25)",
+          "GRI: GRI 305-3 Other Indirect (Scope 3) GHG Emissions (0.18)",
+          "SBTi / GHG Protocol: GHG Protocol Scope Definitions (0.18)"
+        ],
+        "audit_justification": "The disclosure claims decarbonization prioritization without defining what the largest sources of emissions actually are or their volumetric contribution. Failing to provide numerical grounding, scope classification, or assurance creates significant greenwashing exposure.",
+        "engine": "Google Gemini + rules",
+        "risk_score": 78.7,
+        "classification": "bullshit",
+        "badge": "🔴 Bullshit"
+      },
+      {
+        "claim_id": "C10",
+        "page": 9,
+        "claim_text": "The company transitioned to 100 percent renewable electricity for corporate facilities in 2018 and achieved carbon neutrality for corporate emissions in 2020.",
+        "claim_category": "Net-Zero & Targets",
+        "pillar_scores": {
+          "quantification": 52.5,
+          "trajectory": 42,
+          "scope": 74,
+          "assurance": 69
+        },
+        "pillar_rationales": {
+          "quantification": "Specific milestones and a 100 percent renewable metric are given, but absolute power consumption (MWh) and offset volumes for neutrality are missing.",
+          "trajectory": "The claim documents clear retrospective achievement dates (2018 and 2020) for operational targets, though continuous monitoring mechanisms are omitted.",
+          "scope": "The boundary is strictly limited to corporate facilities (offices, stores, data centers), excluding material Scope 3 supply chain and product use emissions.",
+          "assurance": "The claim is self-declared in the text without mapping to standard indicators such as GRI 305-2 or citing third-party assurance."
+        },
+        "matched_standard": "GRI 305-2",
+        "retrieved_standards": [
+          "GRI: GRI 305-2 Energy Indirect (Scope 2) GHG Emissions (0.25)",
+          "ISSB: IFRS S2 Climate-related Disclosures: GHG Emissions (Paragraph 29) (0.21)",
+          "ISSB: IFRS S2 Climate-related Targets (Paragraphs 33-36) (0.18)",
+          "SBTi / GHG Protocol: GHG Protocol Scope Definitions (0.17)"
+        ],
+        "audit_justification": "While the claim features defined historical achievement years and specifies 100 percent renewable operational electricity, it applies strictly to corporate operations. Omitting the far larger Scope 3 value-chain emissions and failing to disclose whether contractual instruments meet additionality criteria limits the overall legitimacy of the neutrality assertion.",
+        "engine": "Google Gemini + rules",
+        "risk_score": 58.5,
+        "classification": "grey",
+        "badge": "🟡 Grey Zone"
+      },
+      {
+        "claim_id": "C11",
+        "page": 9,
+        "claim_text": "The company achieved carbon neutrality for corporate emissions in 2025 and recognizes supply chain decarbonization as a crucial effort representing the largest share of its carbon footprint.",
+        "claim_category": "Net-Zero & Targets",
+        "pillar_scores": {
+          "quantification": 56.5,
+          "trajectory": 51.5,
+          "scope": 63,
+          "assurance": 68
+        },
+        "pillar_rationales": {
+          "quantification": "The statement cites the 2025 reporting period but omits absolute emissions figures (tCO2e), offset volumes, and the percentage share of supply chain emissions.",
+          "trajectory": "A single milestone year (2025) is stated for corporate neutrality, but no actionable roadmap or interim reduction milestones are provided for the supply chain.",
+          "scope": "The claim explicitly acknowledges that the supply chain forms the bulk of its carbon footprint while restricting carbon neutrality solely to corporate emissions.",
+          "assurance": "A footnote reference is included, but the claim itself does not specify reporting frameworks or provide third-party assurance opinions."
+        },
+        "matched_standard": "IFRS S2 paragraph 29",
+        "retrieved_standards": [
+          "GRI: GRI 2-5 External Assurance (0.31)",
+          "Taxonomy: Pillar - External Assurance & Standard Alignment Test (0.22)",
+          "ISSB: IFRS S2 Climate-related Disclosures: GHG Emissions (Paragraph 29) (0.18)",
+          "ISSB: IFRS S2 Climate-related Targets (Paragraphs 33-36) (0.18)"
+        ],
+        "audit_justification": "The company acknowledges that supply chain emissions dominate its total carbon impact, yet reports carbon neutrality exclusively for its corporate operations. Without disclosing absolute operational footprints, offset reliance, or a quantified supply chain decarbonization pathway, the statement risks misleading stakeholders on total organizational climate impact.",
+        "engine": "Google Gemini + rules",
+        "risk_score": 59.2,
+        "classification": "grey",
+        "badge": "🟡 Grey Zone"
+      },
+      {
+        "claim_id": "C12",
+        "page": 9,
+        "claim_text": "The company targets carbon neutrality by 2030 aligned with IPCC 1.5°C recommendations and commits to a 90 percent reduction from its 2015 baseline by 2050.",
+        "claim_category": "Net-Zero & Targets",
+        "pillar_scores": {
+          "quantification": 30.1,
+          "trajectory": 17.5,
+          "scope": 45.5,
+          "assurance": 55
+        },
+        "pillar_rationales": {
+          "quantification": "The claim includes explicit reduction percentages (90 percent), a base year (2015), and target years (2030 and 2050), though absolute figures in tCO2e are missing.",
+          "trajectory": "The roadmap specifies a 2015 baseline, a 2030 interim target, and a 2050 long-term target aligned with 1.5°C criteria, though external validation is cited via footnote rather than confirmed SBTi approval.",
+          "scope": "The commitment encompasses broad organizational emissions, but the claim does not explicitly itemize coverage across Scope 1, Scope 2, and material Scope 3 categories.",
+          "assurance": "The target cites scientific alignment and literature references, but does not state formal third-party validation (e.g., SBTi approval) or audit assurance."
+        },
+        "matched_standard": "SBTi Corporate Net-Zero Standard",
+        "retrieved_standards": [
+          "GRI: GRI 2-5 External Assurance (0.30)",
+          "Taxonomy: Pillar - External Assurance & Standard Alignment Test (0.21)",
+          "SBTi / GHG Protocol: SBTi Corporate Net-Zero Standard (0.20)",
+          "ISSB: IFRS S2 Climate-related Targets (Paragraphs 33-36) (0.19)"
+        ],
+        "audit_justification": "The claim establishes a solid target structure by combining a 2015 baseline, a 2030 interim carbon-neutral goal, and a 2050 90 percent absolute reduction target aligned with IPCC 1.5°C pathways. Greenwashing risk is low to moderate, but verifying whether Scope 3 is fully incorporated and securing validated SBTi status remain essential.",
+        "engine": "Google Gemini + rules",
+        "risk_score": 35.8,
+        "classification": "legit",
+        "badge": "🟢 Legit"
+      },
+      {
+        "claim_id": "C13",
+        "page": 11,
+        "claim_text": "The company has sourced 100 percent renewable energy for its facilities and reduced gross emissions by more than 60 percent since 2015 while growing revenue by 78 percent.",
+        "claim_category": "Renewable Energy",
+        "pillar_scores": {
+          "quantification": 26.3,
+          "trajectory": 31.5,
+          "scope": 45.5,
+          "assurance": 76
+        },
+        "pillar_rationales": {
+          "quantification": "The claim includes relative figures (100% renewable energy, 60% gross emission reduction, 78% revenue growth) and a baseline year (2015), but omits absolute metrics (tCO2e, MWh).",
+          "trajectory": "An explicit historical base year (2015) and decoupling progress are established, though forward-looking milestones and CAPEX allocations are not detailed in the sentence.",
+          "scope": "The statement distinguishes facility operational emissions (Scope 1 and 2) and addresses supplier emissions and low-carbon materials, but lacks categorical breakdown for Scope 3.",
+          "assurance": "The claim discloses no external assurance provider, assurance standard, or specific GRI/ISSB disclosure mapping."
+        },
+        "matched_standard": "IFRS S2 para 29",
+        "retrieved_standards": [
+          "GRI: GRI 2-5 External Assurance (0.27)",
+          "GRI: GRI 305-2 Energy Indirect (Scope 2) GHG Emissions (0.23)",
+          "Taxonomy: Pillar - External Assurance & Standard Alignment Test (0.19)",
+          "ISSB: IFRS S2 Climate-related Disclosures: GHG Emissions (Paragraph 29) (0.15)"
+        ],
+        "audit_justification": "The claim demonstrates decoupled revenue growth and gross emissions reductions against an explicit 2015 base year, along with 100% facility renewable sourcing. However, it relies solely on relative percentages without absolute tCO2e data and lacks third-party assurance documentation.",
+        "engine": "Google Gemini + rules",
+        "risk_score": 42.3,
+        "classification": "legit",
+        "badge": "🟢 Legit"
+      },
+      {
+        "claim_id": "C14",
+        "page": 11,
+        "claim_text": "Low-carbon materials represent emissions savings derived from transitioning to recycled materials and low-carbon aluminum in company products.",
+        "claim_category": "GHG Emissions",
+        "pillar_scores": {
+          "quantification": 75.6,
+          "trajectory": 73.5,
+          "scope": 70,
+          "assurance": 79.5
+        },
+        "pillar_rationales": {
+          "quantification": "The definition provides zero quantitative metrics, physical units, or baseline data for the asserted emissions savings.",
+          "trajectory": "No baseline year, interim reduction schedule, or roadmap milestones are attached to this methodological footnote.",
+          "scope": "The claim references Scope 3 Category 1 embodied emissions (recycled materials and aluminum) but fails to define boundary accounting or lifecycle parameters.",
+          "assurance": "The calculation methodology for emissions savings is self-declared with no cited assurance, standard indicators, or third-party verification."
+        },
+        "matched_standard": "GRI 305-3",
+        "retrieved_standards": [
+          "GRI: GRI 2-5 External Assurance (0.30)",
+          "Taxonomy: Pillar - External Assurance & Standard Alignment Test (0.21)",
+          "GRI: GRI 305-3 Other Indirect (Scope 3) GHG Emissions (0.17)",
+          "GRI: GRI 302 Energy and GRI 303 Water (Companion Standards) (0.16)"
+        ],
+        "audit_justification": "This footnote defines 'low-carbon materials' as emissions savings but provides no underlying quantitative calculation or accounting methodology. Without verification or baseline data, treating avoided emissions as equivalent to gross footprint reductions carries substantial reporting risk.",
+        "engine": "Google Gemini + rules",
+        "risk_score": 74.5,
+        "classification": "bullshit",
+        "badge": "🔴 Bullshit"
+      },
+      {
+        "claim_id": "C15",
+        "page": 12,
+        "claim_text": "The company designs products to be less carbon intensive by prioritizing recycled and renewable content, low-carbon materials, and hardware and software energy efficiency.",
+        "claim_category": "Renewable Energy",
+        "pillar_scores": {
+          "quantification": 93.2,
+          "trajectory": 76.5,
+          "scope": 73.5,
+          "assurance": 85.5
+        },
+        "pillar_rationales": {
+          "quantification": "The claim relies on generic comparative marketing terms ('less carbon intensive', 'energy efficiency') with no physical units, baselines, or numerical targets.",
+          "trajectory": "No baseline year, interim targets, or structured implementation timetable are provided.",
+          "scope": "Mentions material Scope 3 drivers (product use and materials) qualitatively, but omits operational boundaries and quantified coverage.",
+          "assurance": "The statement is an internal corporate declaration unsupported by standard alignment or independent third-party assurance."
+        },
+        "matched_standard": "EU Directive 2024/825",
+        "retrieved_standards": [
+          "GRI: GRI 2-5 External Assurance (0.28)",
+          "Taxonomy: Pillar - External Assurance & Standard Alignment Test (0.20)",
+          "GRI: GRI 305-2 Energy Indirect (Scope 2) GHG Emissions (0.18)",
+          "GRI: GRI 302 Energy and GRI 303 Water (Companion Standards) (0.17)"
+        ],
+        "audit_justification": "The statement employs generic sustainability terminology without providing quantitative metrics or verifiable environmental performance. Under EU Directive 2024/825, broad unbacked environmental claims of this nature present high greenwashing vulnerability.",
+        "engine": "Google Gemini + rules",
+        "risk_score": 82.6,
+        "classification": "bullshit",
+        "badge": "🔴 Bullshit"
+      },
+      {
+        "claim_id": "C16",
+        "page": 12,
+        "claim_text": "The company accomplished its goal to use 100 percent recycled cobalt in batteries, 100 percent recycled gold plating and tin solder in printed circuit boards, and 100 percent recycled rare earth elements in magnets.",
+        "claim_category": "Waste & Circularity",
+        "pillar_scores": {
+          "quantification": 33.6,
+          "trajectory": 34,
+          "scope": 26.5,
+          "assurance": 72.5
+        },
+        "pillar_rationales": {
+          "quantification": "The claim specifies 100 percent recycled content across four distinct material streams and components, though absolute mass weights (metric tonnes) are omitted.",
+          "trajectory": "The achievement completes a defined component-level procurement goal, although the exact reporting completion period is not stated.",
+          "scope": "Explicitly connects component materials to Scope 3 manufacturing, transport, and product use, addressing highly material supply chain inputs.",
+          "assurance": "The achievement is self-declared without explicit mention of chain-of-custody verification (e.g., ISO 14021) or third-party assurance."
+        },
+        "matched_standard": "GRI 305-3",
+        "retrieved_standards": [
+          "GRI: GRI 2-5 External Assurance (0.28)",
+          "Taxonomy: Pillar - External Assurance & Standard Alignment Test (0.20)",
+          "GRI: GRI 305-3 Other Indirect (Scope 3) GHG Emissions (0.17)",
+          "GRI: GRI 302 Energy and GRI 303 Water (Companion Standards) (0.15)"
+        ],
+        "audit_justification": "The claim demonstrates high specificity regarding 100% recycled content across distinct components (batteries, PCBs, magnets) aligned with material Scope 3 emissions. However, independent chain-of-custody assurance or mass-balance documentation is necessary to fully substantiate the 100% claim.",
+        "engine": "Google Gemini + rules",
+        "risk_score": 39.7,
+        "classification": "legit",
+        "badge": "🟢 Legit"
+      },
+      {
+        "claim_id": "C17",
+        "page": 13,
+        "claim_text": "The company pursues circularity through materials sourcing, product design choices, and recycling and recovery innovations.",
+        "claim_category": "Waste & Circularity",
+        "pillar_scores": {
+          "quantification": 99.4,
+          "trajectory": 83.5,
+          "scope": 84,
+          "assurance": 89
+        },
+        "pillar_rationales": {
+          "quantification": "The claim consists entirely of qualitative buzzwords ('circularity', 'innovation') with zero empirical metrics, baseline figures, or units.",
+          "trajectory": "Contains no target years, interim milestones, baselines, or forward-looking action plans.",
+          "scope": "Mentions circularity conceptually across the lifecycle without specifying boundaries, materials, or material GHG impact.",
+          "assurance": "Purely aspirational narrative text with no indicator mapping or external verification."
+        },
+        "matched_standard": "EU Directive 2024/825",
+        "retrieved_standards": [
+          "GRI: GRI 2-5 External Assurance (0.29)",
+          "Taxonomy: Pillar - External Assurance & Standard Alignment Test (0.21)",
+          "GRI: GRI 302 Energy and GRI 303 Water (Companion Standards) (0.17)",
+          "CSRD / EU: EU Empowering Consumers for the Green Transition Directive (2024/825) (0.17)"
+        ],
+        "audit_justification": "This introductory text functions solely as promotional marketing language with no auditable environmental content. It violates core disclosure principles by asserting circularity leadership without verifiable data or standard alignment.",
+        "engine": "Google Gemini + rules",
+        "risk_score": 89.5,
+        "classification": "bullshit",
+        "badge": "🔴 Bullshit"
+      },
+      {
+        "claim_id": "C18",
+        "page": 13,
+        "claim_text": "The company prioritizes transitioning to materials manufactured using low-carbon energy and recycled content to progress toward carbon neutrality.",
+        "claim_category": "Net-Zero & Targets",
+        "pillar_scores": {
+          "quantification": 77.5,
+          "trajectory": 69,
+          "scope": 70,
+          "assurance": 85.5
+        },
+        "pillar_rationales": {
+          "quantification": "The claim lacks quantitative targets, percentages, or metrics for low-carbon energy usage or recycled material volume.",
+          "trajectory": "References a high-level goal of carbon neutrality but omits an explicit target year, baseline year, interim milestones, or resourced CAPEX plan.",
+          "scope": "Addresses material product components (Scope 3 Category 1) but fails to define the emissions boundary or proportion of product materials covered.",
+          "assurance": "The strategy and overarching carbon neutrality target cite no third-party validation (e.g., SBTi) or external assurance."
+        },
+        "matched_standard": "IFRS S2 paras 33-36",
+        "retrieved_standards": [
+          "GRI: GRI 2-5 External Assurance (0.27)",
+          "Taxonomy: Pillar - External Assurance & Standard Alignment Test (0.20)",
+          "GRI: GRI 305-3 Other Indirect (Scope 3) GHG Emissions (0.15)",
+          "ISSB: IFRS S2 Climate-related Targets (Paragraphs 33-36) (0.15)"
+        ],
+        "audit_justification": "While identifying material supply chain components as decarbonization levers, the claim links them to an unanchored carbon neutrality goal without target dates, interim milestones, or SBTi validation. Under IFRS S2, climate-related targets must disclose explicit timelines, baselines, and scope boundaries.",
+        "engine": "Google Gemini + rules",
+        "risk_score": 75.1,
+        "classification": "bullshit",
+        "badge": "🔴 Bullshit"
+      },
+      {
+        "claim_id": "C19",
+        "page": 15,
+        "claim_text": "In 2025, 30 percent of the materials contained in products shipped came from recycled or renewable sources as part of a goal to source only recycled and renewable materials across 15 priority materials.",
+        "claim_category": "Renewable Energy",
+        "pillar_scores": {
+          "quantification": 41.9,
+          "trajectory": 65.5,
+          "scope": 52.5,
+          "assurance": 78.1
+        },
+        "pillar_rationales": {
+          "quantification": "The claim specifies a percentage (30%) and reporting period (2025) but lacks absolute mass metrics (metric tonnes), a baseline comparison, and disaggregation between recycled versus renewable inputs.",
+          "trajectory": "A distant qualitative goal of sourcing 100% recycled and renewable materials is stated without a defined target year, base year, or milestone roadmap in the claim text.",
+          "scope": "The claim addresses product material composition affecting Scope 3 Category 1 emissions, but restricts reporting scope to 15 priority materials rather than total bill of materials.",
+          "assurance": "The achievement is self-declared with an unanchored footnote reference and no disclosure of external assurance or alignment with standards such as GRI 301."
+        },
+        "matched_standard": "GRI 305-3 / GRI 301-2 (Recycled input materials)",
+        "retrieved_standards": [
+          "GRI: GRI 305-2 Energy Indirect (Scope 2) GHG Emissions (0.19)",
+          "ISSB: IFRS S2 Climate-related Disclosures: GHG Emissions (Paragraph 29) (0.16)",
+          "GRI: GRI 305-3 Other Indirect (Scope 3) GHG Emissions (0.15)",
+          "SBTi / GHG Protocol: GHG Protocol Scope Definitions (0.15)"
+        ],
+        "audit_justification": "The claim provides a clear reporting year and headline percentage for circular material sourcing, addressing a material Scope 3 driver. However, greenwashing risk remains moderate-to-high because the overarching 100% goal lacks a defined target deadline and interim trajectory, while the metrics conflate recycled and renewable streams without absolute tonnage or third-party verification.",
+        "engine": "Google Gemini + rules",
+        "risk_score": 57.7,
+        "classification": "grey",
+        "badge": "🟡 Grey Zone"
+      },
+      {
+        "claim_id": "C20",
+        "page": 16,
+        "claim_text": "In 2025, more than 70 percent of the aluminum shipped in products to customers came from recycled sources.",
+        "claim_category": "Waste & Circularity",
+        "pillar_scores": {
+          "quantification": 44.7,
+          "trajectory": 56,
+          "scope": 68.6,
+          "assurance": 79.5
+        },
+        "pillar_rationales": {
+          "quantification": "The claim provides a bounded metric ('more than 70 percent') and reporting year (2025), but relies on an approximate threshold and omits absolute mass quantities (tonnes) and prior-year comparatives.",
+          "trajectory": "The statement reports a single-year progress figure without disclosing a baseline year, historical trend, or future milestone target for recycled aluminum content.",
+          "scope": "The claim isolates a single favorable material category (aluminum) shipped in products, leaving the remaining product mass and broader Scope 3 Category 1 impacts undisclosed.",
+          "assurance": "The metric is an unverified internal declaration with no mention of independent third-party assurance or reporting framework indicators under GRI 2-5."
+        },
+        "matched_standard": "GRI 2-5 External Assurance",
+        "retrieved_standards": [
+          "GRI: GRI 2-5 External Assurance (0.28)",
+          "Taxonomy: Pillar - External Assurance & Standard Alignment Test (0.20)",
+          "GRI: GRI 305-3 Other Indirect (Scope 3) GHG Emissions (0.16)",
+          "SBTi / GHG Protocol: GHG Protocol Scope Definitions (0.16)"
+        ],
+        "audit_justification": "While disclosing recycled aluminum content addresses a carbon-intensive hardware component, isolating a single high-performing commodity creates a cherry-picking risk against total product material mass. Furthermore, the absence of independent assurance and exact absolute weights prevents verification against international sustainability reporting frameworks.",
+        "engine": "Google Gemini + rules",
+        "risk_score": 60.5,
+        "classification": "grey",
+        "badge": "🟡 Grey Zone"
+      }
+    ],
+    "trace": [
+      {
+        "t": "15:15:15",
+        "stage": "PLAN",
+        "message": "20 claim candidates queued; engine = Hybrid: Google Gemini (gemini-3.8-flash) x rules"
+      },
+      {
+        "t": "15:15:15",
+        "stage": "RETRIEVE",
+        "message": "C01 (p.3) weak pillars ['Assurance', 'Scope Coverage'] -> GRI: GRI 2-5 External Assurance"
+      },
+      {
+        "t": "15:15:15",
+        "stage": "RETRIEVE",
+        "message": "C02 (p.3) weak pillars ['Assurance', 'Scope Coverage'] -> GRI: GRI 2-5 External Assurance"
+      },
+      {
+        "t": "15:15:15",
+        "stage": "RETRIEVE",
+        "message": "C03 (p.3) weak pillars ['Assurance', 'Scope Coverage'] -> GRI: GRI 2-5 External Assurance"
+      },
+      {
+        "t": "15:15:15",
+        "stage": "RETRIEVE",
+        "message": "C04 (p.3) weak pillars ['Scope Coverage', 'Assurance'] -> GRI: GRI 2-5 External Assurance"
+      },
+      {
+        "t": "15:15:15",
+        "stage": "RETRIEVE",
+        "message": "C05 (p.5) weak pillars ['Scope Coverage', 'Assurance'] -> GRI: GRI 2-5 External Assurance"
+      },
+      {
+        "t": "15:15:15",
+        "stage": "RETRIEVE",
+        "message": "C06 (p.6) weak pillars ['Quantification', 'Assurance'] -> GRI: GRI 2-5 External Assurance"
+      },
+      {
+        "t": "15:15:15",
+        "stage": "RETRIEVE",
+        "message": "C07 (p.7) weak pillars ['Scope Coverage', 'Assurance'] -> GRI: GRI 2-5 External Assurance"
+      },
+      {
+        "t": "15:15:15",
+        "stage": "RETRIEVE",
+        "message": "C08 (p.7) weak pillars ['Assurance', 'Scope Coverage'] -> GRI: GRI 2-5 External Assurance"
+      },
+      {
+        "t": "15:15:15",
+        "stage": "RETRIEVE",
+        "message": "C09 (p.9) weak pillars ['Assurance', 'Scope Coverage'] -> GRI: GRI 2-5 External Assurance"
+      },
+      {
+        "t": "15:15:15",
+        "stage": "RETRIEVE",
+        "message": "C10 (p.9) weak pillars ['Scope Coverage', 'Quantification'] -> GRI: GRI 305-2 Energy Indirect (Scope 2) GHG Emissions"
+      },
+      {
+        "t": "15:15:15",
+        "stage": "RETRIEVE",
+        "message": "C11 (p.9) weak pillars ['Assurance', 'Scope Coverage'] -> GRI: GRI 2-5 External Assurance"
+      },
+      {
+        "t": "15:15:15",
+        "stage": "RETRIEVE",
+        "message": "C12 (p.9) weak pillars ['Scope Coverage', 'Assurance'] -> GRI: GRI 2-5 External Assurance"
+      },
+      {
+        "t": "15:15:15",
+        "stage": "RETRIEVE",
+        "message": "C13 (p.11) weak pillars ['Scope Coverage', 'Assurance'] -> GRI: GRI 2-5 External Assurance"
+      },
+      {
+        "t": "15:15:15",
+        "stage": "RETRIEVE",
+        "message": "C14 (p.11) weak pillars ['Scope Coverage', 'Assurance'] -> GRI: GRI 2-5 External Assurance"
+      },
+      {
+        "t": "15:15:15",
+        "stage": "RETRIEVE",
+        "message": "C15 (p.12) weak pillars ['Quantification', 'Assurance'] -> GRI: GRI 2-5 External Assurance"
+      },
+      {
+        "t": "15:15:15",
+        "stage": "RETRIEVE",
+        "message": "C16 (p.12) weak pillars ['Roadmap', 'Assurance'] -> GRI: GRI 2-5 External Assurance"
+      },
+      {
+        "t": "15:15:15",
+        "stage": "RETRIEVE",
+        "message": "C17 (p.13) weak pillars ['Quantification', 'Assurance'] -> GRI: GRI 2-5 External Assurance"
+      },
+      {
+        "t": "15:15:15",
+        "stage": "RETRIEVE",
+        "message": "C18 (p.13) weak pillars ['Assurance', 'Scope Coverage'] -> GRI: GRI 2-5 External Assurance"
+      },
+      {
+        "t": "15:15:15",
+        "stage": "RETRIEVE",
+        "message": "C19 (p.15) weak pillars ['Scope Coverage', 'Roadmap'] -> GRI: GRI 305-2 Energy Indirect (Scope 2) GHG Emissions"
+      },
+      {
+        "t": "15:15:15",
+        "stage": "RETRIEVE",
+        "message": "C20 (p.16) weak pillars ['Scope Coverage', 'Assurance'] -> GRI: GRI 2-5 External Assurance"
+      },
+      {
+        "t": "15:15:56",
+        "stage": "EVALUATE",
+        "message": "Google Gemini returned 6 validated audits in 41.1s"
+      },
+      {
+        "t": "15:15:56",
+        "stage": "FILTER",
+        "message": "C01 discarded by LLM (not an environmental claim)"
+      },
+      {
+        "t": "15:15:56",
+        "stage": "SCORE",
+        "message": "C02 -> risk 65 🟡"
+      },
+      {
+        "t": "15:15:56",
+        "stage": "SCORE",
+        "message": "C03 -> risk 76 🔴"
+      },
+      {
+        "t": "15:15:56",
+        "stage": "SCORE",
+        "message": "C04 -> risk 46 🟢"
+      },
+      {
+        "t": "15:15:56",
+        "stage": "VERIFY",
+        "message": "C05: LLM vs rules disagreement on Scope Coverage - reconciled by hybrid blend"
+      },
+      {
+        "t": "15:15:56",
+        "stage": "SCORE",
+        "message": "C05 -> risk 42 🟢"
+      },
+      {
+        "t": "15:15:56",
+        "stage": "FILTER",
+        "message": "C06 discarded by LLM (not an environmental claim)"
+      },
+      {
+        "t": "15:17:55",
+        "stage": "EVALUATE",
+        "message": "Google Gemini returned 6 validated audits in 118.2s"
+      },
+      {
+        "t": "15:17:55",
+        "stage": "SCORE",
+        "message": "C07 -> risk 52 🟡"
+      },
+      {
+        "t": "15:17:55",
+        "stage": "SCORE",
+        "message": "C08 -> risk 82 🔴"
+      },
+      {
+        "t": "15:17:55",
+        "stage": "VERIFY",
+        "message": "C09: LLM vs rules disagreement on Roadmap - reconciled by hybrid blend"
+      },
+      {
+        "t": "15:17:55",
+        "stage": "SCORE",
+        "message": "C09 -> risk 79 🔴"
+      },
+      {
+        "t": "15:17:55",
+        "stage": "VERIFY",
+        "message": "C10: LLM vs rules disagreement on Roadmap - reconciled by hybrid blend"
+      },
+      {
+        "t": "15:17:55",
+        "stage": "SCORE",
+        "message": "C10 -> risk 58 🟡"
+      },
+      {
+        "t": "15:17:55",
+        "stage": "SCORE",
+        "message": "C11 -> risk 59 🟡"
+      },
+      {
+        "t": "15:17:55",
+        "stage": "SCORE",
+        "message": "C12 -> risk 36 🟢"
+      },
+      {
+        "t": "15:20:20",
+        "stage": "EVALUATE",
+        "message": "Google Gemini returned 6 validated audits in 145.9s"
+      },
+      {
+        "t": "15:20:20",
+        "stage": "SCORE",
+        "message": "C13 -> risk 42 🟢"
+      },
+      {
+        "t": "15:20:20",
+        "stage": "VERIFY",
+        "message": "C14: LLM vs rules disagreement on Quantification, Roadmap - reconciled by hybrid blend"
+      },
+      {
+        "t": "15:20:20",
+        "stage": "SCORE",
+        "message": "C14 -> risk 74 🔴"
+      },
+      {
+        "t": "15:20:20",
+        "stage": "VERIFY",
+        "message": "C15: LLM vs rules disagreement on Roadmap - reconciled by hybrid blend"
+      },
+      {
+        "t": "15:20:20",
+        "stage": "SCORE",
+        "message": "C15 -> risk 83 🔴"
+      },
+      {
+        "t": "15:20:20",
+        "stage": "SCORE",
+        "message": "C16 -> risk 40 🟢"
+      },
+      {
+        "t": "15:20:20",
+        "stage": "VERIFY",
+        "message": "C17: LLM vs rules disagreement on Roadmap - reconciled by hybrid blend"
+      },
+      {
+        "t": "15:20:20",
+        "stage": "SCORE",
+        "message": "C17 -> risk 90 🔴"
+      },
+      {
+        "t": "15:20:20",
+        "stage": "SCORE",
+        "message": "C18 -> risk 75 🔴"
+      },
+      {
+        "t": "15:20:39",
+        "stage": "EVALUATE",
+        "message": "Google Gemini returned 2 validated audits in 18.8s"
+      },
+      {
+        "t": "15:20:39",
+        "stage": "SCORE",
+        "message": "C19 -> risk 58 🟡"
+      },
+      {
+        "t": "15:20:39",
+        "stage": "SCORE",
+        "message": "C20 -> risk 60 🟡"
+      },
+      {
+        "t": "15:20:43",
+        "stage": "METADATA",
+        "message": "Audited Entity: 'Apple Inc.' | Identified Sector: 'Consumer Hardware & Tech'"
+      }
+    ],
+    "engine": "Hybrid: Google Gemini (gemini-3.8-flash) x rules",
+    "parser": "PyMuPDF + pdfplumber tables",
+    "llm_warning": null,
+    "n_candidates": 20,
+    "auto_detected": {
+      "company": "Apple Inc.",
+      "sector": "Consumer Hardware & Tech"
+    },
+    "is_custom": true
+  }
+]
