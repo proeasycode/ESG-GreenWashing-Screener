@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GreenWash-Screener | NTPU Sustainability & ESG Data Analytics</title>
-  <meta name="description" content="Agentic RAG for Corporate Sustainability Auditing & Multi-Standard ESG Verification" />
+  <title>GreenWash-Screener | Institutional ESG &amp; Sustainability Audit Terminal</title>
+  <meta name="description" content="Automated Corporate Sustainability Auditing, Disclosure Verification & Multi-Standard ESG Compliance" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <!-- Chart.js CDN for interactive charts -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
   <link rel="stylesheet" href="index.css" />
@@ -17,33 +17,38 @@
   <header class="app-header">
     <div class="header-container">
       <div class="header-titles">
-        <div class="inst-tag">National Taipei University • College of Business • ESG &amp; Sustainability Analytics</div>
+        <div class="inst-tag">National Taipei University &bull; College of Business &bull; ESG &amp; Sustainability Analytics</div>
         <div class="title-row">
-          <span class="logo-leaf">🌿</span>
+          <div class="logo-mark" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <path d="m9 12 2 2 4-4"/>
+            </svg>
+          </div>
           <h1 class="main-title">GreenWash-Screener</h1>
-          <span class="badge-tag">Agentic RAG v1.0</span>
+          <span class="badge-tag">Assurance Terminal</span>
         </div>
         <p class="subtitle-text">
-          Corporate Sustainability Auditing &amp; Multi-Standard ESG Verification
+          Corporate Sustainability Auditing &amp; Multi-Standard Verification
           <span class="standards-chip">GRI 305</span>
           <span class="standards-chip">SASB TC-SC</span>
           <span class="standards-chip">TCFD</span>
           <span class="standards-chip">ISSB S1/S2</span>
-          <span class="standards-chip">EU Directive 2024/825</span>
+          <span class="standards-chip">EU 2024/825</span>
         </p>
       </div>
 
       <div class="header-actions">
-        <div class="status-pill" id="backendStatusPill" title="Backend Server Status">
+        <div class="status-pill" id="backendStatusPill" title="Assurance Server Status">
           <span class="status-dot"></span>
           <span id="backendStatusText">Connecting...</span>
         </div>
-        <button class="settings-btn" id="openSettingsBtn" title="LLM Agent Configuration">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <button class="settings-btn" id="openSettingsBtn" title="Assurance Engine Configuration">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="3"></circle>
             <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
           </svg>
-          <span id="activeProviderLabel">Mock Offline</span>
+          <span id="activeProviderLabel">Offline Heuristic</span>
         </button>
       </div>
     </div>
@@ -51,19 +56,43 @@
     <!-- Navigation Tabs -->
     <nav class="tabs-nav" aria-label="Main Navigation">
       <button class="tab-link active" data-tab="tab-screener">
-        <span class="tab-icon">📄</span> Single-Company Screener
+        <svg class="tab-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="16" y1="13" x2="8" y2="13"/>
+          <line x1="16" y1="17" x2="8" y2="17"/>
+        </svg>
+        <span>Single-Company Screener</span>
       </button>
       <button class="tab-link" data-tab="tab-benchmark">
-        <span class="tab-icon">🏆</span> Sector Benchmark
+        <svg class="tab-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="20" x2="18" y2="10"/>
+          <line x1="12" y1="20" x2="12" y2="4"/>
+          <line x1="6" y1="20" x2="6" y2="14"/>
+        </svg>
+        <span>Sector Benchmark</span>
       </button>
       <button class="tab-link" data-tab="tab-tester">
-        <span class="tab-icon">⚡</span> Live RAG Claim Tester
+        <svg class="tab-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <span>Claim Verification Testbench</span>
       </button>
       <button class="tab-link" data-tab="tab-standards">
-        <span class="tab-icon">📚</span> Standards &amp; Taxonomy
+        <svg class="tab-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+        </svg>
+        <span>Standards &amp; Taxonomy</span>
       </button>
       <button class="tab-link" data-tab="tab-academic">
-        <span class="tab-icon">🎓</span> Academic Overview
+        <svg class="tab-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+          <polyline points="2 17 12 22 22 17"/>
+          <polyline points="2 12 12 17 22 12"/>
+        </svg>
+        <span>Methodology Overview</span>
       </button>
     </nav>
   </header>
@@ -80,18 +109,20 @@
         <div class="mode-switch-group">
           <label class="radio-pill active" id="radioDemoMode">
             <input type="radio" name="auditMode" value="demo" checked />
-            <span>🚀 Demo Benchmark (6 Companies)</span>
+            <svg class="pill-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z"/></svg>
+            <span>Pre-calculated Benchmark (6 Companies)</span>
           </label>
           <label class="radio-pill" id="radioLivePdf">
             <input type="radio" name="auditMode" value="pdf" />
-            <span>📄 Live AI Audit (Upload PDF)</span>
+            <svg class="pill-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <span>Report Audit (Upload PDF)</span>
           </label>
         </div>
 
         <!-- Demo Mode Selector -->
         <div id="demoSelectorSection" class="selector-row">
           <div class="form-group flex-1">
-            <label for="companySelect">Select a pre-loaded semiconductor company:</label>
+            <label for="companySelect">Audited Corporation Portfolio:</label>
             <select id="companySelect" class="form-select">
               <option value="" disabled>Loading companies...</option>
             </select>
@@ -108,20 +139,29 @@
           <!-- Quick Sample Action Bar -->
           <div class="sample-callout-box">
             <div class="sample-callout-text">
-              <span class="sample-icon">🍎</span>
+              <div class="sample-badge-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              </div>
               <div>
-                <strong>Pre-Loaded Official Apple 2024 Sample Report:</strong>
-                <p>Directly audit Apple's Environmental Progress Report (Sector: Consumer Hardware &amp; Tech) and benchmark it with 1 click.</p>
+                <strong>Official Apple 2024 Environmental Progress Report:</strong>
+                <p>Audits Apple's 2024 environmental disclosure (Sector: Consumer Hardware &amp; Technology) across all 4 pillars and benchmarks findings.</p>
               </div>
             </div>
             <button class="btn btn-outline btn-sm" id="loadAppleSampleBtn" type="button">
-              🚀 Run Apple 2024 Audit
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              <span>Load Apple 2024 Report</span>
             </button>
           </div>
 
           <div class="drop-zone" id="pdfDropZone">
-            <div class="drop-icon">📤</div>
-            <div class="drop-text">Drag &amp; drop a Sustainability / ESG Report (PDF) here, or <span class="browse-link">browse</span></div>
+            <div class="drop-icon" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="17 8 12 3 7 8"/>
+                <line x1="12" y1="3" x2="12" y2="15"/>
+              </svg>
+            </div>
+            <div class="drop-text">Drag and drop a Sustainability / ESG Report (PDF) here, or <span class="browse-link">browse filesystem</span></div>
             <input type="file" id="pdfFileInput" accept=".pdf" class="hidden-file-input" />
             <div class="file-name-preview" id="pdfFileName"></div>
           </div>
@@ -129,12 +169,12 @@
           <div class="upload-options-row">
             <div class="form-group flex-1">
               <label for="pdfCompanyName">Company Name:</label>
-              <input type="text" id="pdfCompanyName" class="form-input" placeholder="Leave blank for autonomous AI detection..." />
+              <input type="text" id="pdfCompanyName" class="form-input" placeholder="Leave empty for automatic title detection..." />
             </div>
             <div class="form-group flex-1">
-              <label for="pdfSectorSelect">Industry Sector:</label>
+              <label for="pdfSectorSelect">Industry Sector Classification:</label>
               <select id="pdfSectorSelect" class="form-select">
-                <option value="auto" selected>🤖 Autonomous AI Detection (Auto-detect)</option>
+                <option value="auto" selected>Automatic Sector Classification</option>
                 <option value="Consumer Hardware & Tech">Consumer Hardware &amp; Tech</option>
                 <option value="Semiconductors & Electronics">Semiconductors &amp; Electronics</option>
                 <option value="Automotive & Mobility">Automotive &amp; Mobility</option>
@@ -144,12 +184,12 @@
                 <option value="Retail & Consumer Goods">Retail &amp; Consumer Goods</option>
                 <option value="Healthcare & Pharma">Healthcare &amp; Pharma</option>
                 <option value="Aerospace & Heavy Industry">Aerospace &amp; Heavy Industry</option>
-                <option value="custom">✍️ Custom Sector...</option>
+                <option value="custom">Custom Sector...</option>
               </select>
               <input type="text" id="pdfCustomSectorInput" class="form-input mt-2 hidden" placeholder="Enter custom sector name..." />
             </div>
             <div class="form-group">
-              <label for="maxClaimsInput">Max Claims:</label>
+              <label for="maxClaimsInput">Sample Depth:</label>
               <input type="number" id="maxClaimsInput" class="form-input" min="3" max="25" value="10" style="width: 100px;" />
             </div>
           </div>
@@ -157,17 +197,18 @@
           <div class="upload-actions-bar">
             <label class="checkbox-container">
               <input type="checkbox" id="autoSaveBenchmarkCheckbox" checked />
-              <span>💾 Automatically save to Sector Benchmark</span>
+              <span>Automatically record to sector benchmark index</span>
             </label>
             <button class="btn btn-primary" id="runPdfAuditBtn" disabled>
-              🚀 Run Agentic RAG ESG Audit on PDF
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <span>Execute Sustainability Audit</span>
             </button>
           </div>
 
           <!-- Progress bar -->
           <div id="pdfProgressWrapper" class="progress-wrapper hidden">
             <div class="progress-bar-bg"><div class="progress-bar-fill" id="pdfProgressBar"></div></div>
-            <div class="progress-text" id="pdfProgressText">Parsing PDF and verifying standards...</div>
+            <div class="progress-text" id="pdfProgressText">Parsing PDF document and cross-referencing standards...</div>
           </div>
         </div>
       </div>
@@ -185,7 +226,8 @@
           </div>
           <div class="header-action-group">
             <button class="btn btn-sm btn-outline hidden" id="saveBenchmarkExplicitBtn" type="button">
-              💾 Save to Sector Benchmark
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+              <span>Save to Sector Benchmark</span>
             </button>
             <div id="riskBadgeSlot"></div>
           </div>
@@ -196,20 +238,20 @@
           <div class="metric-card">
             <div class="metric-title">Greenwashing Risk Index</div>
             <div class="metric-value" id="kpiGwri">0.0%</div>
-            <div class="metric-sub" id="kpiGwriSub">Weighted 4-Pillar Score</div>
+            <div class="metric-sub" id="kpiGwriSub">Weighted 4-Pillar Metric</div>
           </div>
           <div class="metric-card">
-            <div class="metric-title">Total Claims Audited</div>
+            <div class="metric-title">Disclosures Audited</div>
             <div class="metric-value" id="kpiClaimsCount">0</div>
-            <div class="metric-sub">Dissected Statements</div>
+            <div class="metric-sub">Analyzed Statements</div>
           </div>
           <div class="metric-card">
-            <div class="metric-title">🔴 Bullshit Claims</div>
+            <div class="metric-title">High Risk Disclosures</div>
             <div class="metric-value text-red" id="kpiBullshit">0%</div>
-            <div class="metric-sub">High Greenwashing Flags</div>
+            <div class="metric-sub">Unsubstantiated / Vague</div>
           </div>
           <div class="metric-card">
-            <div class="metric-title">🟢 Legit Claims</div>
+            <div class="metric-title">Verified Disclosures</div>
             <div class="metric-value text-green" id="kpiLegit">0%</div>
             <div class="metric-sub">Fully Substantiated</div>
           </div>
@@ -226,21 +268,21 @@
           <div class="card chart-card">
             <div class="card-header">
               <span class="card-title">Greenwashing Risk Gauge</span>
-              <span class="card-hint">0 = Clean • 100 = Severe Risk</span>
+              <span class="card-hint">0 = Fully Verified &bull; 100 = Severe Risk</span>
             </div>
             <div class="gauge-container">
               <svg class="gauge-svg" viewBox="0 0 200 125" id="riskGaugeSvg">
                 <!-- Outer Arc Background -->
-                <path d="M 20 110 A 80 80 0 0 1 180 110" fill="none" stroke="#1e293b" stroke-width="18" stroke-linecap="round"/>
+                <path d="M 20 110 A 80 80 0 0 1 180 110" fill="none" stroke="#1a2233" stroke-width="14" stroke-linecap="round"/>
                 <!-- Green Zone: 0-30 -->
-                <path d="M 20 110 A 80 80 0 0 1 61.5 42" fill="none" stroke="#10b981" stroke-width="18" stroke-linecap="round"/>
+                <path d="M 20 110 A 80 80 0 0 1 61.5 42" fill="none" stroke="#10b981" stroke-width="14" stroke-linecap="round"/>
                 <!-- Yellow Zone: 30-70 -->
-                <path d="M 61.5 42 A 80 80 0 0 1 138.5 42" fill="none" stroke="#f59e0b" stroke-width="18"/>
+                <path d="M 61.5 42 A 80 80 0 0 1 138.5 42" fill="none" stroke="#d97706" stroke-width="14"/>
                 <!-- Red Zone: 70-100 -->
-                <path d="M 138.5 42 A 80 80 0 0 1 180 110" fill="none" stroke="#f43f5e" stroke-width="18" stroke-linecap="round"/>
+                <path d="M 138.5 42 A 80 80 0 0 1 180 110" fill="none" stroke="#e11d48" stroke-width="14" stroke-linecap="round"/>
                 <!-- Needle Pivot & Needle -->
-                <line id="gaugeNeedle" x1="100" y1="110" x2="100" y2="38" stroke="#f8fafc" stroke-width="3.5" stroke-linecap="round"/>
-                <circle cx="100" cy="110" r="7" fill="#f8fafc"/>
+                <line id="gaugeNeedle" x1="100" y1="110" x2="100" y2="40" stroke="#f1f5f9" stroke-width="3" stroke-linecap="round"/>
+                <circle cx="100" cy="110" r="6" fill="#f1f5f9"/>
               </svg>
               <div class="gauge-score" id="gaugeScoreText">0.0%</div>
               <div class="gauge-label" id="gaugeStatusLabel">Low Risk</div>
@@ -250,8 +292,8 @@
           <!-- Claims Breakdown Chart -->
           <div class="card chart-card">
             <div class="card-header">
-              <span class="card-title">Claims Breakdown</span>
-              <span class="card-hint">Legit / Grey / Bullshit</span>
+              <span class="card-title">Disclosure Classification</span>
+              <span class="card-hint">Verified / Incomplete / High Risk</span>
             </div>
             <div class="chart-wrapper">
               <canvas id="claimsPieChart"></canvas>
@@ -261,8 +303,8 @@
           <!-- Standards Alignment Bar -->
           <div class="card chart-card">
             <div class="card-header">
-              <span class="card-title">ESG Standards Alignment</span>
-              <span class="card-hint">GRI, SASB, TCFD, ISSB, CSRD</span>
+              <span class="card-title">Standards Alignment</span>
+              <span class="card-hint">GRI &bull; SASB &bull; TCFD &bull; ISSB &bull; CSRD</span>
             </div>
             <div class="chart-wrapper">
               <canvas id="standardsBarChart"></canvas>
@@ -274,16 +316,16 @@
         <div class="claims-section">
           <div class="claims-header-row">
             <div>
-              <h3 class="section-title">📋 Dissected Environmental Claims &amp; Regulatory Cross-Examination</h3>
-              <p class="section-subtitle">Evaluated across 4 Pillars (Quantification 30%, Roadmap 25%, Scope 25%, Assurance 20%) and checked against indexed ESG standards.</p>
+              <h3 class="section-title">Dissected Environmental Claims &amp; Regulatory Audit</h3>
+              <p class="section-subtitle">Cross-examined across 4 Pillars (Quantification 30%, Roadmap 25%, Scope 25%, Assurance 20%) and checked against indexed ESG frameworks.</p>
             </div>
             <!-- Filters -->
             <div class="claim-filters">
               <div class="filter-pill-group">
-                <button class="filter-chip active" data-filter="all">All</button>
-                <button class="filter-chip" data-filter="legit">🟢 Legit</button>
-                <button class="filter-chip" data-filter="grey">🟡 Grey Zone</button>
-                <button class="filter-chip" data-filter="bullshit">🔴 Bullshit</button>
+                <button class="filter-chip active" data-filter="all">All Disclosures</button>
+                <button class="filter-chip" data-filter="legit">Verified</button>
+                <button class="filter-chip" data-filter="grey">Incomplete</button>
+                <button class="filter-chip" data-filter="bullshit">High Risk</button>
               </div>
               <select id="claimCategoryFilter" class="form-select select-compact">
                 <option value="all">All Categories</option>
@@ -302,21 +344,24 @@
     <!-- ================================================================= -->
     <section id="tab-benchmark" class="tab-pane">
       <div class="section-heading-box">
-        <h2 class="section-title">🏆 Multi-Sector Corporate ESG Benchmark</h2>
+        <h2 class="section-title">Multi-Sector Corporate ESG Benchmark</h2>
         <p class="section-subtitle">Cross-company comparative auditing across global industry leaders based on official sustainability disclosures.</p>
       </div>
 
       <!-- Sector Filter & Action Bar -->
       <div class="benchmark-filter-bar card">
         <div class="filter-left">
-          <label for="sectorFilterSelect" class="filter-label">🎯 <b>Filter by Sector:</b></label>
+          <label for="sectorFilterSelect" class="filter-label"><b>Filter by Sector:</b></label>
           <select id="sectorFilterSelect" class="form-select select-medium">
-            <option value="all">🌐 All Sectors</option>
+            <option value="all">All Sectors</option>
           </select>
         </div>
         <div class="filter-right">
           <span class="sector-count-pill" id="sectorCompanyCount">6 companies analyzed</span>
-          <button class="btn btn-sm btn-outline" id="refreshBenchmarkBtn" type="button">🔄 Refresh Benchmark</button>
+          <button class="btn btn-sm btn-outline" id="refreshBenchmarkBtn" type="button">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+            <span>Refresh Benchmark</span>
+          </button>
         </div>
       </div>
 
@@ -325,7 +370,7 @@
         <div class="card chart-card">
           <div class="card-header">
             <span class="card-title">Greenwashing Risk Index Leaderboard</span>
-            <span class="card-hint">Lower score = More substantiated disclosures</span>
+            <span class="card-hint">Lower score indicates higher empirical substantiation</span>
           </div>
           <div class="chart-wrapper-lg">
             <canvas id="leaderboardChart"></canvas>
@@ -334,7 +379,7 @@
 
         <div class="card chart-card">
           <div class="card-header">
-            <span class="card-title">4-Pillar Radar Comparison</span>
+            <span class="card-title">4-Pillar Comparative Radar</span>
             <div class="radar-company-pills" id="radarCompanyPills"></div>
           </div>
           <div class="chart-wrapper-lg">
@@ -347,8 +392,8 @@
       <div class="charts-grid-2 mt-4">
         <div class="card chart-card">
           <div class="card-header">
-            <span class="card-title">🔍 Strategic "Talk vs. Walk" Matrix</span>
-            <span class="card-hint">X = Marketing Buzzword Volume • Y = Empirical Verification</span>
+            <span class="card-title">Strategic "Talk vs. Walk" Matrix</span>
+            <span class="card-hint">X = Marketing Volume &bull; Y = Empirical Verification</span>
           </div>
           <div class="chart-wrapper-lg">
             <canvas id="talkVsWalkChart"></canvas>
@@ -357,7 +402,7 @@
 
         <div class="card">
           <div class="card-header">
-            <span class="card-title">📊 Sector Verification Summary</span>
+            <span class="card-title">Sector Verification Summary</span>
           </div>
           <div class="table-container">
             <table class="data-table" id="benchmarkTable">
@@ -367,7 +412,7 @@
                   <th>Sector</th>
                   <th>Ticker</th>
                   <th>GWRI Risk</th>
-                  <th>Legit Ratio</th>
+                  <th>Verified Ratio</th>
                   <th>Scope 3</th>
                   <th>Assurance</th>
                   <th>Actions</th>
@@ -379,8 +424,8 @@
             </table>
           </div>
           <div class="managerial-takeaway">
-            <b>💡 Managerial Takeaway:</b>
-            Companies in the <b>Silent Performers</b> quadrant (e.g. TSMC, Intel) demonstrate strong physical metrics and third-party assurance with modest marketing hype. In contrast, heavy greenwashers exhibit high marketing volume while omitting Scope 3 emissions and interim milestones.
+            <b>Audit Summary &amp; Empirical Findings:</b>
+            Companies in the high-substantiation quadrant (e.g. TSMC, Intel) demonstrate documented physical metrics and accredited third-party assurance under ISAE 3000. In contrast, higher-risk disclosures exhibit elevated marketing volume while omitting Scope 3 supply-chain boundaries and quantified interim milestones.
           </div>
         </div>
       </div>
@@ -391,29 +436,30 @@
     <!-- ================================================================= -->
     <section id="tab-tester" class="tab-pane">
       <div class="section-heading-box">
-        <h2 class="section-title">⚡ Live Corporate Claim Tester &amp; RAG Dissector</h2>
-        <p class="section-subtitle">Type or paste any corporate environmental statement to watch the Agentic RAG dissect it across the 4 pillars in real time.</p>
+        <h2 class="section-title">Corporate Claim Verification &amp; Testbench</h2>
+        <p class="section-subtitle">Audit any environmental statement across the 4 pillars with multi-standard vector retrieval.</p>
       </div>
 
       <div class="card">
         <div class="form-group mb-3">
-          <label for="sampleClaimsSelect">Or choose a pre-set example claim:</label>
+          <label for="sampleClaimsSelect">Reference Test Cases:</label>
           <select id="sampleClaimsSelect" class="form-select">
-            <option value="">-- Choose an illustrative test case --</option>
-            <option value="We are proud to be the global eco-friendly green leader, aspiring to achieve net-zero carbon by 2050 through clean innovation.">🔴 Generic Vague Claim: "Proud to be the eco-friendly green leader, net-zero by 2050..."</option>
-            <option value="In 2023, our Scope 1 and Scope 2 emissions fell 18% to 1.45 million tCO2e against our 2019 baseline, verified by KPMG under ISAE 3000.">🟢 Fully Substantiated: "Scope 1 &amp; 2 fell 18% to 1.45M tCO2e vs 2019 baseline, KPMG verified..."</option>
-            <option value="We planted 50,000 trees in our local community park and eliminated all single-use plastic straws from our corporate cafeteria.">🟡 Distraction / Cherry-picking: "Planted 50,000 trees and eliminated plastic straws..."</option>
-            <option value="Our SBTi-validated target commits us to reduce absolute Scope 1, 2, and material Scope 3 Category 1 emissions by 42% by 2030 from a 2022 baseline.">🟢 SBTi Validated Scope 1, 2 &amp; 3 Roadmap: "42% absolute reduction by 2030..."</option>
+            <option value="">-- Select a representative disclosure pattern --</option>
+            <option value="We are proud to be the global eco-friendly green leader, aspiring to achieve net-zero carbon by 2050 through clean innovation.">[High Risk] Generic qualitative statement: net-zero by 2050 without milestones</option>
+            <option value="In 2023, our Scope 1 and Scope 2 emissions fell 18% to 1.45 million tCO2e against our 2019 baseline, verified by KPMG under ISAE 3000.">[Verified] Quantified Scope 1 &amp; 2 reduction with 2019 baseline and ISAE 3000 assurance</option>
+            <option value="We planted 50,000 trees in our local community park and eliminated all single-use plastic straws from our corporate cafeteria.">[Incomplete] Materiality distraction: off-boundary activities with zero Scope 1-3 metric</option>
+            <option value="Our SBTi-validated target commits us to reduce absolute Scope 1, 2, and material Scope 3 Category 1 emissions by 42% by 2030 from a 2022 baseline.">[Verified] Science-based target covering Scope 1, 2, and material Scope 3 by 2030</option>
           </select>
         </div>
 
         <div class="form-group mb-3">
-          <label for="customClaimText">Claim Text to Audit:</label>
-          <textarea id="customClaimText" class="form-textarea" rows="3" placeholder="e.g. We aim to become carbon neutral by 2050 through clean and sustainable technologies..."></textarea>
+          <label for="customClaimText">Disclosure Text to Verify:</label>
+          <textarea id="customClaimText" class="form-textarea" rows="3" placeholder="Paste or type a corporate sustainability statement (e.g. We aim to achieve net-zero carbon emissions across our direct operations by 2030 against a 2020 baseline)..."></textarea>
         </div>
 
         <button class="btn btn-primary" id="auditClaimBtn">
-          🔎 Audit Claim with Agentic RAG
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <span>Verify Disclosure Against Standards</span>
         </button>
       </div>
 
@@ -425,7 +471,7 @@
               <span class="badge" id="testResultBadge">EVALUATING...</span>
               <span class="score-display" id="testResultScore">Risk 0%</span>
             </div>
-            <div class="matched-standard-tag" id="testResultMatchedStd">Matched: Loading...</div>
+            <div class="matched-standard-tag" id="testResultMatchedStd">Standard: Loading...</div>
           </div>
 
           <div class="claim-quote-box" id="testResultQuote"></div>
@@ -433,7 +479,7 @@
           <div class="verdict-banner" id="testResultVerdict"></div>
 
           <!-- 4 Pillar Breakdown Cards -->
-          <h4 class="mt-4 mb-2 font-semibold">4-Pillar Score Breakdown</h4>
+          <h4 class="mt-4 mb-2 font-semibold">4-Pillar Verification Breakdown</h4>
           <div class="pillar-grid-4">
             <div class="pillar-card">
               <div class="pillar-title">1. Quantification (30%)</div>
@@ -459,7 +505,7 @@
 
           <!-- Top-K Retrieved Passages Accordion -->
           <div class="retrieved-passages-box mt-4">
-            <div class="passages-header">📚 Top-K Retrieved Standards Passages (RAG Vector Corpus)</div>
+            <div class="passages-header">Retrieved Regulatory Standards (Vector Corpus)</div>
             <div id="retrievedPassagesList" class="passages-list"></div>
           </div>
         </div>
@@ -471,29 +517,29 @@
     <!-- ================================================================= -->
     <section id="tab-standards" class="tab-pane">
       <div class="section-heading-box">
-        <h2 class="section-title">📚 Indexed ESG Standards &amp; Greenwashing Taxonomy</h2>
-        <p class="section-subtitle">Examine the RAG knowledge base containing the multi-standard corpus and the 4 Pillars auditing ontology.</p>
+        <h2 class="section-title">Indexed ESG Standards &amp; Greenwashing Taxonomy</h2>
+        <p class="section-subtitle">Examine the structured knowledge base containing regulatory standards and the 4-Pillars audit ontology.</p>
       </div>
 
       <!-- 4 Pillars Methodology Cards -->
       <div class="pillars-taxonomy-grid">
         <div class="card taxonomy-card">
-          <div class="taxonomy-pillar-tag">Pillar 1 • 30% Weight</div>
+          <div class="taxonomy-pillar-tag">Pillar 1 &bull; 30% Weight</div>
           <h3>Quantification &amp; Specificity</h3>
-          <p class="taxonomy-desc">Verifies physical metrics (tCO2e, MWh, m³, %) rather than vague qualitative adjectives. Cross-referenced against <b>GRI 305-1, GRI 305-2, and SASB TC-SC-110a.1</b>.</p>
+          <p class="taxonomy-desc">Verifies physical metrics (tCO2e, MWh, m³, %) rather than vague qualitative statements. Cross-referenced against <b>GRI 305-1, GRI 305-2, and SASB TC-SC-110a.1</b>.</p>
         </div>
         <div class="card taxonomy-card">
-          <div class="taxonomy-pillar-tag">Pillar 2 • 25% Weight</div>
+          <div class="taxonomy-pillar-tag">Pillar 2 &bull; 25% Weight</div>
           <h3>Trajectory &amp; Baselines</h3>
-          <p class="taxonomy-desc">Checks for defined base years, interim targets (2025, 2030), and annual milestones compliant with <b>IFRS S2 para 33–36 &amp; SBTi Corporate Standard</b>.</p>
+          <p class="taxonomy-desc">Verifies defined base years, interim targets (2025, 2030), and annual milestones compliant with <b>IFRS S2 para 33–36 &amp; SBTi Corporate Standard</b>.</p>
         </div>
         <div class="card taxonomy-card">
-          <div class="taxonomy-pillar-tag">Pillar 3 • 25% Weight</div>
+          <div class="taxonomy-pillar-tag">Pillar 3 &bull; 25% Weight</div>
           <h3>Scope &amp; Materiality</h3>
           <p class="taxonomy-desc">Inspects full boundary coverage, specifically requiring Scope 3 supply chain disclosure when material. Aligned with <b>TCFD &amp; GHG Protocol Corporate Standard</b>.</p>
         </div>
         <div class="card taxonomy-card">
-          <div class="taxonomy-pillar-tag">Pillar 4 • 20% Weight</div>
+          <div class="taxonomy-pillar-tag">Pillar 4 &bull; 20% Weight</div>
           <h3>Third-Party Assurance</h3>
           <p class="taxonomy-desc">Validates independent verification by accredited audit firms under <b>ISAE 3000, ISO 14064-3, or AA1000AS</b>, differentiating limited from reasonable assurance.</p>
         </div>
@@ -502,8 +548,8 @@
       <!-- Standards Search & Corpus Table -->
       <div class="card mt-4">
         <div class="standards-toolbar">
-          <div class="card-title">Indexed Regulatory Corpus (<span id="standardsCount">0</span> chunks)</div>
-          <input type="text" id="standardsSearchInput" class="form-input search-input" placeholder="Filter standards (e.g. GRI, SASB, Scope 3, EU Directive)..." />
+          <div class="card-title">Indexed Regulatory Corpus (<span id="standardsCount">0</span> sections)</div>
+          <input type="text" id="standardsSearchInput" class="form-input search-input" placeholder="Search standards (GRI, SASB, Scope 3, EU Directive)..." />
         </div>
         <div class="standards-grid" id="standardsGridContainer">
           <!-- Populated dynamically -->
@@ -516,35 +562,35 @@
     <!-- ================================================================= -->
     <section id="tab-academic" class="tab-pane">
       <div class="card academic-hero-card">
-        <div class="academic-badge">National Taipei University • College of Business</div>
+        <div class="academic-badge">National Taipei University &bull; College of Business</div>
         <h2 class="academic-title">Sustainability and ESG Data Analytics</h2>
         <div class="academic-meta">
-          <span><b>Instructor:</b> Prof. Min-Yuh Day</span>
-          <span><b>Domain:</b> FinTech &amp; AI-Driven Sustainability Auditing</span>
-          <span><b>Focus:</b> Agentic RAG for Corporate Greenwashing Detection</span>
+          <span><b>Course:</b> Sustainability &amp; ESG Analytics</span>
+          <span><b>Domain:</b> Quantitative ESG Verification &amp; Regulatory Auditing</span>
+          <span><b>Methodology:</b> Automated Multi-Pillar Greenwashing Detection</span>
         </div>
       </div>
 
       <div class="academic-grid mt-4">
         <div class="card">
-          <h3 class="card-title">🎯 Project Mission &amp; Problem Statement</h3>
+          <h3 class="card-title">Project Mission &amp; Problem Statement</h3>
           <p class="academic-text">
-            Corporate sustainability disclosures frequently suffer from <b>greenwashing</b>—the selective disclosure of positive environmental actions while omitting material impacts, using vague unscientific buzzwords, or claiming distant 2050 net-zero targets without credible interim roadmaps.
+            Corporate sustainability disclosures frequently suffer from <b>greenwashing</b>—the selective disclosure of positive environmental actions while omitting material impacts, using vague unscientific claims, or announcing distant 2050 net-zero goals without interim roadmaps.
           </p>
           <p class="academic-text">
-            <b>GreenWash-Screener</b> is an autonomous multi-agent audit pipeline that parses corporate sustainability reports (PDFs), extracts empirical claims, and cross-examines them against a vector-indexed knowledge base of international sustainability frameworks (GRI, SASB, TCFD, ISSB, and EU Directive 2024/825).
+            <b>GreenWash-Screener</b> is an autonomous multi-stage audit pipeline that parses corporate sustainability reports (PDFs), extracts empirical claims, and cross-examines them against a vector-indexed knowledge base of international sustainability frameworks (GRI, SASB, TCFD, ISSB, and EU Directive 2024/825).
           </p>
         </div>
 
         <div class="card">
-          <h3 class="card-title">📐 The 4-Pillar Greenwashing Risk Index (GWRI)</h3>
+          <h3 class="card-title">The 4-Pillar Greenwashing Risk Index (GWRI)</h3>
           <div class="formula-box">
-            <code>GWRI = 0.30·P_quant + 0.25·P_traj + 0.25·P_scope + 0.20·P_assur</code>
+            <code>GWRI = 0.30&middot;P_quant + 0.25&middot;P_traj + 0.25&middot;P_scope + 0.20&middot;P_assur</code>
           </div>
           <ul class="academic-list">
-            <li><b>🟢 Low Risk (&lt; 30):</b> Substantiated with hard metrics, baseline years, Scope 3 inclusion, and verified by accredited auditors.</li>
-            <li><b>🟡 Grey Zone (30–70):</b> Incomplete disclosures; vague target roadmaps, partial scope boundaries, or missing assurance.</li>
-            <li><b>🔴 High Risk (&gt; 70):</b> Severe greenwashing; unsupported marketing superlatives ("eco-friendly", "clean pioneer") or cherry-picked distractions.</li>
+            <li><b>Low Risk (&lt; 30):</b> Substantiated with physical metrics, defined base years, Scope 3 inclusion, and verified by accredited auditors.</li>
+            <li><b>Grey Zone (30–70):</b> Incomplete disclosures; vague target roadmaps, partial scope boundaries, or missing independent assurance.</li>
+            <li><b>High Risk (&gt; 70):</b> Unsubstantiated claims; generic superlative language ("eco-friendly", "clean pioneer") or cherry-picked distractions.</li>
           </ul>
         </div>
       </div>
@@ -555,30 +601,30 @@
   <div class="modal-backdrop hidden" id="settingsModal">
     <div class="modal-card">
       <div class="modal-header">
-        <h3 class="modal-title">⚙️ LLM Agent Configuration</h3>
-        <button class="modal-close-btn" id="closeSettingsBtn">&times;</button>
+        <h3 class="modal-title">Assurance Engine Configuration</h3>
+        <button class="modal-close-btn" id="closeSettingsBtn" aria-label="Close dialog">&times;</button>
       </div>
       <div class="modal-body">
         <div class="form-group mb-3">
-          <label for="providerSelect">LLM Provider:</label>
+          <label for="providerSelect">Audit Execution Engine:</label>
           <select id="providerSelect" class="form-select">
-            <option value="Mock Offline Fallback">Mock Offline Fallback (100% Free / Zero API Key)</option>
+            <option value="Mock Offline Fallback">Offline Rule-Based Heuristic (Local, Deterministic)</option>
             <option value="Google Gemini">Google Gemini (Gemini 2.5 Flash / Interactions)</option>
             <option value="OpenAI">OpenAI (GPT-4o / GPT-4o-mini)</option>
             <option value="NVIDIA NIM">NVIDIA NIM (Llama 3.1 70B / 405B)</option>
           </select>
-          <p class="form-hint">The offline analyzer runs heuristic rule-based NLP locally without any API key or cost.</p>
+          <p class="form-hint">The offline analyzer executes rule-based NLP locally without external API dependencies or latency.</p>
         </div>
 
         <div class="form-group mb-3" id="apiKeyGroup">
           <label for="apiKeyInput">API Key:</label>
           <input type="password" id="apiKeyInput" class="form-input" placeholder="Enter API Key (optional if set in .env)" />
-          <p class="form-hint" id="apiKeyHint">Environment variable checked automatically if configured.</p>
+          <p class="form-hint" id="apiKeyHint">Environment variables are checked automatically if configured.</p>
         </div>
 
         <div class="form-group mb-3" id="modelGroup">
-          <label for="modelInput">Model ID:</label>
-          <input type="text" id="modelInput" class="form-input" placeholder="Default model will be used" />
+          <label for="modelInput">Model Identifier:</label>
+          <input type="text" id="modelInput" class="form-input" placeholder="Default model identifier" />
         </div>
       </div>
       <div class="modal-footer">

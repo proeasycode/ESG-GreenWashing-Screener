@@ -97,7 +97,7 @@ function populateSectorSelector() {
 
   const optAll = document.createElement('option');
   optAll.value = 'all';
-  optAll.textContent = `🌐 All Sectors (${state.companies.length} companies)`;
+  optAll.textContent = `All Sectors (${state.companies.length} companies)`;
   select.appendChild(optAll);
 
   // Group companies by sector
@@ -136,9 +136,15 @@ function setupSectorFilter() {
 
   if (refreshBtn) {
     refreshBtn.addEventListener('click', async () => {
-      refreshBtn.textContent = '⏳ Refreshing...';
+      refreshBtn.innerHTML = `
+        <span class="spinner-sm"></span>
+        <span>Refreshing...</span>
+      `;
       await loadBenchmarkData();
-      refreshBtn.textContent = '🔄 Refresh Benchmark';
+      refreshBtn.innerHTML = `
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+        <span>Refresh Benchmark</span>
+      `;
     });
   }
 }
@@ -204,8 +210,8 @@ function populateCompanySelector() {
   state.companies.forEach((comp) => {
     const opt = document.createElement('option');
     opt.value = comp.company;
-    const tag = comp.is_custom ? '✨ ' : '';
-    opt.textContent = `${tag}${comp.company} (${comp.country || ''} • ${comp.sector || ''})`;
+    const tag = comp.is_custom ? '[Custom] ' : '';
+    opt.textContent = `${tag}${comp.company} (${comp.country || ''} &bull; ${comp.sector || ''})`;
     select.appendChild(opt);
   });
 
@@ -216,14 +222,14 @@ function populateCompanySelector() {
     const defaultComp = state.companies.find(c => c.company === 'TSMC') || state.companies[0];
     if (defaultComp) {
       select.value = defaultComp.company;
-      displayCompanyAudit(defaultComp, defaultComp.is_custom ? 'Custom Audited Report' : 'Pre-computed Benchmark Dataset');
+      displayCompanyAudit(defaultComp, defaultComp.is_custom ? 'Custom Audited Report' : 'Benchmark Dataset');
     }
   }
 
   select.onchange = () => {
     const chosen = state.companies.find(c => c.company === select.value);
     if (chosen) {
-      displayCompanyAudit(chosen, chosen.is_custom ? 'Custom Audited Report' : 'Pre-computed Benchmark Dataset');
+      displayCompanyAudit(chosen, chosen.is_custom ? 'Custom Audited Report' : 'Benchmark Dataset');
     }
   };
 }
@@ -232,23 +238,25 @@ function displayCompanyAudit(company, engineLabel) {
   state.selectedCompany = company;
 
   // Header and metadata
-  document.getElementById('companyHeading').textContent = `Audit Report: ${company.company}`;
-  document.getElementById('engineTag').textContent = `Engine: ${engineLabel || 'Agentic RAG'}`;
+  document.getElementById('companyHeading').textContent = `${company.company}`;
+  document.getElementById('engineTag').textContent = `Assurance Engine: ${engineLabel || 'Heuristic Audit'}`;
   
   const sectorBadge = document.getElementById('companySectorBadge');
   if (sectorBadge) {
-    sectorBadge.textContent = `Sector: ${company.sector || 'Not specified'}`;
+    sectorBadge.textContent = `${company.sector || 'Not specified'}`;
   }
 
   // Explicit Save to Benchmark button
   const saveBtn = document.getElementById('saveBenchmarkExplicitBtn');
   if (saveBtn) {
     saveBtn.classList.remove('hidden');
-    saveBtn.textContent = company.is_custom ? '✅ In Benchmark' : '💾 Save to Sector Benchmark';
+    saveBtn.innerHTML = company.is_custom 
+      ? `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> <span>In Benchmark</span>`
+      : `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg> <span>Save to Sector Benchmark</span>`;
     saveBtn.disabled = false;
     saveBtn.onclick = async () => {
       saveBtn.disabled = true;
-      saveBtn.textContent = '⏳ Saving...';
+      saveBtn.textContent = 'Saving...';
       try {
         const res = await fetch('/api/benchmark/save', {
           method: 'POST',
@@ -256,12 +264,12 @@ function displayCompanyAudit(company, engineLabel) {
           body: JSON.stringify(company),
         });
         if (!res.ok) throw new Error('Failed to save to benchmark');
-        saveBtn.textContent = '✅ Saved to Sector Benchmark!';
+        saveBtn.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> <span>Saved to Benchmark</span>`;
         company.is_custom = true;
         await loadBenchmarkData();
       } catch (err) {
         saveBtn.disabled = false;
-        saveBtn.textContent = '❌ Save error';
+        saveBtn.textContent = 'Save Error';
         alert(err.message);
       }
     };
@@ -277,11 +285,11 @@ function displayCompanyAudit(company, engineLabel) {
   // Risk Badge
   const badgeSlot = document.getElementById('riskBadgeSlot');
   if (gwri <= 48) {
-    badgeSlot.innerHTML = `<span class="badge-legit">🟢 VERIFIED / LOW RISK</span>`;
+    badgeSlot.innerHTML = `<span class="badge-legit"><span class="badge-dot"></span>VERIFIED / LOW RISK</span>`;
   } else if (gwri <= 74) {
-    badgeSlot.innerHTML = `<span class="badge-grey">🟡 GREY ZONE / INCOMPLETE</span>`;
+    badgeSlot.innerHTML = `<span class="badge-grey"><span class="badge-dot"></span>INCOMPLETE / GREY ZONE</span>`;
   } else {
-    badgeSlot.innerHTML = `<span class="badge-bullshit">🔴 HIGH GREENWASHING RISK</span>`;
+    badgeSlot.innerHTML = `<span class="badge-bullshit"><span class="badge-dot"></span>HIGH RISK DISCLOSURES</span>`;
   }
 
   // KPIs
@@ -325,13 +333,13 @@ function updateRiskGauge(score) {
   const labelEl = document.getElementById('gaugeStatusLabel');
   if (clampedScore <= 30) {
     labelEl.textContent = 'Low Greenwash Risk';
-    labelEl.style.color = '#10b981';
+    labelEl.style.color = '#34d399';
   } else if (clampedScore <= 70) {
     labelEl.textContent = 'Grey Zone';
-    labelEl.style.color = '#f59e0b';
+    labelEl.style.color = '#fbbf24';
   } else {
     labelEl.textContent = 'High Greenwash Risk';
-    labelEl.style.color = '#f43f5e';
+    labelEl.style.color = '#fb7185';
   }
 }
 
@@ -350,12 +358,12 @@ function renderClaimsPieChart(claims) {
   state.charts.claimsPie = new Chart(ctx, {
     type: 'doughnut',
     data: {
-      labels: ['Legit (Substantiated)', 'Grey Zone (Omissions)', 'Bullshit (Vague/Hype)'],
+      labels: ['Verified (Substantiated)', 'Incomplete (Grey Zone)', 'High Risk (Unsubstantiated)'],
       datasets: [{
         data: [legit, grey, bullshit],
-        backgroundColor: ['#10b981', '#f59e0b', '#f43f5e'],
+        backgroundColor: ['#10b981', '#d97706', '#e11d48'],
         borderWidth: 2,
-        borderColor: '#0f172a',
+        borderColor: '#0d1322',
       }]
     },
     options: {
@@ -364,10 +372,10 @@ function renderClaimsPieChart(claims) {
       plugins: {
         legend: {
           position: 'bottom',
-          labels: { color: '#94a3b8', font: { family: 'Inter', size: 11 }, boxWidth: 12 }
+          labels: { color: '#94a3b8', font: { family: 'Inter', size: 11 }, boxWidth: 10, padding: 12 }
         }
       },
-      cutout: '65%'
+      cutout: '72%'
     }
   });
 }
@@ -386,8 +394,8 @@ function renderStandardsBarChart(standards) {
       datasets: [{
         label: 'Alignment (%)',
         data: values,
-        backgroundColor: '#0284c7',
-        borderRadius: 4,
+        backgroundColor: '#2563eb',
+        borderRadius: 3,
       }]
     },
     options: {
@@ -397,12 +405,12 @@ function renderStandardsBarChart(standards) {
         y: {
           beginAtZero: true,
           max: 100,
-          grid: { color: '#1e293b' },
-          ticks: { color: '#94a3b8', font: { family: 'Inter', size: 10 } }
+          grid: { color: 'rgba(255, 255, 255, 0.05)' },
+          ticks: { color: '#64748b', font: { family: 'JetBrains Mono', size: 10 } }
         },
         x: {
           grid: { display: false },
-          ticks: { color: '#cbd5e1', font: { family: 'Inter', size: 11, weight: '600' } }
+          ticks: { color: '#cbd5e1', font: { family: 'Inter', size: 11, weight: '500' } }
         }
       },
       plugins: {
@@ -455,13 +463,13 @@ function renderClaimsList(claims) {
   });
 
   if (filtered.length === 0) {
-    container.innerHTML = `<div class="card text-center py-6 text-muted">No claims match the selected filters.</div>`;
+    container.innerHTML = `<div class="card text-center py-6 text-muted">No disclosures match the selected filter criteria.</div>`;
     return;
   }
 
   filtered.forEach(c => {
     const cls = c.classification || (c.risk_score <= 48 ? 'legit' : (c.risk_score <= 74 ? 'grey' : 'bullshit'));
-    const badgeLabel = cls === 'legit' ? '🟢 LEGIT' : (cls === 'grey' ? '🟡 GREY ZONE' : '🔴 BULLSHIT');
+    const badgeLabel = cls === 'legit' ? 'VERIFIED' : (cls === 'grey' ? 'INCOMPLETE' : 'HIGH RISK');
     const riskScore = c.risk_score !== undefined ? c.risk_score : 50;
     const pScores = c.pillar_scores || { quantification: 50, trajectory: 50, scope: 50, assurance: 50 };
 
@@ -470,12 +478,12 @@ function renderClaimsList(claims) {
     card.innerHTML = `
       <div class="claim-header">
         <div>
-          <span class="claim-id">Claim ${c.claim_id || 'ID'}</span>
-          <span class="claim-page">(Page: ${c.page || 'N/A'})</span>
+          <span class="claim-id">Finding ${c.claim_id || 'ID'}</span>
+          <span class="claim-page">Page: ${c.page || 'N/A'}</span>
           <span class="claim-category-tag">${c.claim_category || 'General'}</span>
         </div>
         <div>
-          <span class="badge-${cls}">${badgeLabel} • Risk ${riskScore.toFixed(0)}%</span>
+          <span class="badge-${cls}">${badgeLabel} &bull; Risk ${riskScore.toFixed(0)}%</span>
         </div>
       </div>
       <div class="claim-text">"${c.claim_text}"</div>
@@ -486,8 +494,8 @@ function renderClaimsList(claims) {
         <span class="pillar-chip"><b>Assurance:</b> ${pScores.assurance || 50}% Risk</span>
       </div>
       <div class="claim-verdict-box">
-        <b>⚖️ Matched Standard &amp; RAG Verdict:</b> <code>${c.matched_standard || 'ESG Standard'}</code><br>
-        ${c.audit_justification || 'Evaluated across multi-pillar criteria.'}
+        <b>Standard &amp; Audit Finding:</b> <code>${c.matched_standard || 'ESG Standard'}</code><br>
+        ${c.audit_justification || 'Evaluated across multi-pillar regulatory criteria.'}
       </div>
     `;
     container.appendChild(card);
@@ -511,7 +519,7 @@ function setupPdfUpload() {
     // Restore demo selected company
     const sel = document.getElementById('companySelect');
     const comp = state.companies.find(c => c.company === sel.value);
-    if (comp) displayCompanyAudit(comp, 'Pre-computed Benchmark Dataset');
+    if (comp) displayCompanyAudit(comp, 'Benchmark Dataset');
   });
 
   radioPdf.addEventListener('click', () => {
@@ -552,7 +560,7 @@ function setupPdfUpload() {
 
   function handleSelectedPdf(file) {
     if (!file.name.toLowerCase().endsWith('.pdf')) {
-      alert('Please upload a valid PDF file.');
+      alert('Please upload a valid PDF document.');
       return;
     }
     fileNamePreview.textContent = `Selected: ${file.name} (${(file.size / (1024 * 1024)).toFixed(2)} MB)`;
@@ -580,14 +588,14 @@ function setupPdfUpload() {
       progressWrapper.classList.remove('hidden');
       appleSampleBtn.disabled = true;
       progressBar.style.width = '35%';
-      progressText.textContent = 'Loading and auditing official Apple 2024 report (RAG + 4 Pillars)...';
+      progressText.textContent = 'Parsing and cross-referencing Apple 2024 Environmental Progress Report...';
 
       try {
         const res = await fetch('/api/sample-apple');
         if (!res.ok) throw new Error('Failed to load official Apple sample report');
 
         progressBar.style.width = '100%';
-        progressText.textContent = 'Apple 2024 audit completed! Integrating into benchmark...';
+        progressText.textContent = 'Audit complete. Updating benchmark...';
         const auditedCompany = await res.json();
 
         await loadBenchmarkData();
@@ -595,16 +603,16 @@ function setupPdfUpload() {
         setTimeout(() => {
           progressWrapper.classList.add('hidden');
           appleSampleBtn.disabled = false;
-          displayCompanyAudit(auditedCompany, 'Apple 2024 Sample • Agentic RAG');
+          displayCompanyAudit(auditedCompany, 'Apple 2024 Audit');
           
           const compSelect = document.getElementById('companySelect');
           if (compSelect) compSelect.value = auditedCompany.company;
-        }, 400);
+        }, 300);
 
       } catch (err) {
         progressWrapper.classList.add('hidden');
         appleSampleBtn.disabled = false;
-        alert(`Apple sample error: ${err.message}`);
+        alert(`Apple report load error: ${err.message}`);
       }
     });
   }
@@ -628,7 +636,7 @@ function setupPdfUpload() {
     progressWrapper.classList.remove('hidden');
     auditBtn.disabled = true;
     progressBar.style.width = '20%';
-    progressText.textContent = 'Uploading PDF and parsing text/tables...';
+    progressText.textContent = 'Uploading PDF and parsing text and tables...';
 
     const formData = new FormData();
     formData.append('file', file);
@@ -641,8 +649,8 @@ function setupPdfUpload() {
     formData.append('model', state.model);
 
     try {
-      progressBar.style.width = '50%';
-      progressText.textContent = 'Querying vector RAG standards & auditing claims...';
+      progressBar.style.width = '55%';
+      progressText.textContent = 'Cross-referencing vector standards and auditing claims...';
 
       const res = await fetch('/api/audit/pdf', {
         method: 'POST',
@@ -655,7 +663,7 @@ function setupPdfUpload() {
       }
 
       progressBar.style.width = '100%';
-      progressText.textContent = 'Audit complete! Rendering results...';
+      progressText.textContent = 'Audit complete. Preparing findings view...';
 
       const auditedCompany = await res.json();
       
@@ -666,11 +674,11 @@ function setupPdfUpload() {
       setTimeout(() => {
         progressWrapper.classList.add('hidden');
         auditBtn.disabled = false;
-        displayCompanyAudit(auditedCompany, auditedCompany.engine || 'Live Agentic RAG');
+        displayCompanyAudit(auditedCompany, auditedCompany.engine || 'Report Audit');
         
         const compSelect = document.getElementById('companySelect');
         if (compSelect) compSelect.value = auditedCompany.company;
-      }, 500);
+      }, 400);
 
     } catch (err) {
       progressWrapper.classList.add('hidden');
@@ -694,7 +702,7 @@ function renderBenchmarkTab() {
 
   const countPill = document.getElementById('sectorCompanyCount');
   if (countPill) {
-    countPill.textContent = `${filtered.length} compan${filtered.length === 1 ? 'y' : 'ies'} displayed ${currentSector !== 'all' ? `(${currentSector})` : ''}`;
+    countPill.textContent = `${filtered.length} compan${filtered.length === 1 ? 'y' : 'ies'} analyzed ${currentSector !== 'all' ? `(${currentSector})` : ''}`;
   }
 
   // Adjust radar selected companies if filtered doesn't include them
@@ -714,9 +722,9 @@ function renderBenchmarkTab() {
 function renderLeaderboardChart(companies) {
   const comps = companies || state.companies;
   const sorted = [...comps].sort((a, b) => a.greenwashing_risk_index - b.greenwashing_risk_index);
-  const labels = sorted.map(c => (c.is_custom ? `✨ ${c.company}` : c.company));
+  const labels = sorted.map(c => (c.is_custom ? `${c.company} (Custom)` : c.company));
   const data = sorted.map(c => c.greenwashing_risk_index);
-  const colors = data.map(val => val <= 48 ? '#10b981' : (val <= 74 ? '#f59e0b' : '#f43f5e'));
+  const colors = data.map(val => val <= 48 ? '#10b981' : (val <= 74 ? '#d97706' : '#e11d48'));
 
   const ctx = document.getElementById('leaderboardChart').getContext('2d');
   if (state.charts.leaderboard) state.charts.leaderboard.destroy();
@@ -729,7 +737,7 @@ function renderLeaderboardChart(companies) {
         label: 'GWRI Risk Score (%)',
         data: data,
         backgroundColor: colors,
-        borderRadius: 4,
+        borderRadius: 2,
       }]
     },
     options: {
@@ -740,12 +748,12 @@ function renderLeaderboardChart(companies) {
         x: {
           beginAtZero: true,
           max: 100,
-          grid: { color: '#1e293b' },
-          ticks: { color: '#94a3b8', font: { family: 'Inter', size: 10 } }
+          grid: { color: 'rgba(255, 255, 255, 0.05)' },
+          ticks: { color: '#64748b', font: { family: 'JetBrains Mono', size: 10 } }
         },
         y: {
           grid: { display: false },
-          ticks: { color: '#f8fafc', font: { family: 'Inter', size: 11, weight: '600' } }
+          ticks: { color: '#cbd5e1', font: { family: 'Inter', size: 11, weight: '500' } }
         }
       },
       plugins: {
@@ -764,7 +772,7 @@ function renderRadarPills(companies) {
     const pill = document.createElement('button');
     const isSelected = state.radarSelectedCompanies.includes(comp.company);
     pill.className = `radar-pill ${isSelected ? 'selected' : ''}`;
-    pill.textContent = (comp.is_custom ? '✨ ' : '') + comp.company;
+    pill.textContent = (comp.is_custom ? '[Custom] ' : '') + comp.company;
 
     pill.addEventListener('click', () => {
       if (state.radarSelectedCompanies.includes(comp.company)) {
@@ -785,12 +793,12 @@ function renderRadarPills(companies) {
 function renderRadarChart(companies) {
   const comps = companies || state.companies;
   const radarColors = [
-    { border: '#38bdf8', bg: 'rgba(56, 189, 248, 0.2)' },
-    { border: '#10b981', bg: 'rgba(16, 185, 129, 0.2)' },
-    { border: '#f59e0b', bg: 'rgba(245, 158, 11, 0.2)' },
-    { border: '#f43f5e', bg: 'rgba(244, 63, 94, 0.2)' },
-    { border: '#a855f7', bg: 'rgba(168, 85, 247, 0.2)' },
-    { border: '#ec4899', bg: 'rgba(236, 72, 153, 0.2)' },
+    { border: '#38bdf8', bg: 'rgba(56, 189, 248, 0.12)' },
+    { border: '#10b981', bg: 'rgba(16, 185, 129, 0.12)' },
+    { border: '#d97706', bg: 'rgba(217, 119, 6, 0.12)' },
+    { border: '#e11d48', bg: 'rgba(225, 29, 72, 0.12)' },
+    { border: '#818cf8', bg: 'rgba(129, 140, 248, 0.12)' },
+    { border: '#06b6d4', bg: 'rgba(6, 182, 212, 0.12)' },
   ];
 
   const datasets = state.radarSelectedCompanies.map((name, idx) => {
@@ -813,8 +821,8 @@ function renderRadarChart(companies) {
       data: [q, t, s, a],
       borderColor: cScheme.border,
       backgroundColor: cScheme.bg,
-      borderWidth: 2,
-      pointRadius: 3,
+      borderWidth: 1.5,
+      pointRadius: 2.5,
     };
   }).filter(Boolean);
 
@@ -834,16 +842,16 @@ function renderRadarChart(companies) {
         r: {
           min: 0,
           max: 100,
-          ticks: { color: '#64748b', backdropColor: 'transparent', stepSize: 25 },
-          grid: { color: '#1e293b' },
-          angleLines: { color: '#1e293b' },
-          pointLabels: { color: '#cbd5e1', font: { family: 'Inter', size: 10, weight: '600' } }
+          ticks: { color: '#64748b', backdropColor: 'transparent', stepSize: 25, font: { family: 'JetBrains Mono', size: 9 } },
+          grid: { color: 'rgba(255, 255, 255, 0.07)' },
+          angleLines: { color: 'rgba(255, 255, 255, 0.07)' },
+          pointLabels: { color: '#94a3b8', font: { family: 'Inter', size: 10, weight: '500' } }
         }
       },
       plugins: {
         legend: {
           position: 'bottom',
-          labels: { color: '#94a3b8', font: { family: 'Inter', size: 11 }, boxWidth: 10 }
+          labels: { color: '#94a3b8', font: { family: 'Inter', size: 11 }, boxWidth: 10, padding: 12 }
         }
       }
     }
@@ -873,9 +881,9 @@ function renderTalkVsWalkChart(companies) {
       datasets: [{
         label: 'Companies',
         data: points,
-        backgroundColor: points.map(p => p.gwri <= 48 ? '#10b981' : (p.gwri <= 74 ? '#f59e0b' : '#f43f5e')),
-        pointRadius: 8,
-        pointHoverRadius: 10,
+        backgroundColor: points.map(p => p.gwri <= 48 ? '#10b981' : (p.gwri <= 74 ? '#d97706' : '#e11d48')),
+        pointRadius: 6,
+        pointHoverRadius: 8,
       }]
     },
     options: {
@@ -883,16 +891,16 @@ function renderTalkVsWalkChart(companies) {
       maintainAspectRatio: false,
       scales: {
         x: {
-          title: { display: true, text: 'Green Marketing Volume (Talk)', color: '#94a3b8' },
-          grid: { color: '#1e293b' },
-          ticks: { color: '#94a3b8' }
+          title: { display: true, text: 'Marketing Volume Index (Disclosure Volume)', color: '#64748b', font: { size: 11 } },
+          grid: { color: 'rgba(255, 255, 255, 0.05)' },
+          ticks: { color: '#64748b', font: { family: 'JetBrains Mono', size: 10 } }
         },
         y: {
-          title: { display: true, text: 'Empirical Verification Score (Walk)', color: '#94a3b8' },
+          title: { display: true, text: 'Empirical Verification Score (Substantiation)', color: '#64748b', font: { size: 11 } },
           beginAtZero: true,
           max: 100,
-          grid: { color: '#1e293b' },
-          ticks: { color: '#94a3b8' }
+          grid: { color: 'rgba(255, 255, 255, 0.05)' },
+          ticks: { color: '#64748b', font: { family: 'JetBrains Mono', size: 10 } }
         }
       },
       plugins: {
@@ -919,23 +927,23 @@ function renderBenchmarkTable(companies) {
     const gwri = c.greenwashing_risk_index || 0;
     const legitRatio = (c.legit_claim_ratio || 0) * 100;
     const riskBadge = gwri <= 48 
-      ? '<span class="badge-legit">Legit</span>' 
-      : (gwri <= 74 ? '<span class="badge-grey">Grey</span>' : '<span class="badge-bullshit">Bullshit</span>');
+      ? '<span class="badge-legit">Verified</span>' 
+      : (gwri <= 74 ? '<span class="badge-grey">Incomplete</span>' : '<span class="badge-bullshit">High Risk</span>');
 
     const customTag = c.is_custom ? '<span class="badge-tag" style="font-size:0.65rem;margin-left:4px;">Custom</span>' : '';
     const deleteBtn = c.is_custom 
-      ? `<button class="btn btn-xs btn-outline delete-btn" data-company="${c.company}" title="Delete from benchmark" style="padding:2px 6px;color:#f43f5e;border-color:rgba(244,63,94,0.3);">🗑️</button>` 
+      ? `<button class="btn btn-xs btn-outline delete-btn" data-company="${c.company}" title="Delete from benchmark" style="padding:4px 7px;color:#f43f5e;border-color:rgba(244,63,94,0.3);"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>` 
       : '';
-    const viewBtn = `<button class="btn btn-xs btn-outline view-btn" data-company="${c.company}" style="padding:2px 8px;">👁️ View</button>`;
+    const viewBtn = `<button class="btn btn-xs btn-outline view-btn" data-company="${c.company}" style="padding:4px 9px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:4px;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>View</button>`;
 
     const tr = document.createElement('tr');
     tr.innerHTML = `
       <td><b>${c.company}</b> ${customTag}</td>
       <td><span class="sector-badge" style="font-size:0.7rem;">${c.sector || 'Other'}</span></td>
       <td><code>${c.ticker || 'N/A'}</code></td>
-      <td>${riskBadge} ${gwri.toFixed(1)}%</td>
-      <td>${legitRatio.toFixed(0)}%</td>
-      <td>${c.scope3_completeness || 0}%</td>
+      <td>${riskBadge} <span class="mono-num">${gwri.toFixed(1)}%</span></td>
+      <td><span class="mono-num">${legitRatio.toFixed(0)}%</span></td>
+      <td><span class="mono-num">${c.scope3_completeness || 0}%</span></td>
       <td>${c.assurance_level || 'None'}</td>
       <td style="display:flex;gap:6px;align-items:center;">
         ${viewBtn}
@@ -992,12 +1000,12 @@ function setupClaimTester() {
   btn.addEventListener('click', async () => {
     const text = textarea.value.trim();
     if (!text) {
-      alert('Please enter or select a claim text to audit.');
+      alert('Please enter or select an environmental statement to verify.');
       return;
     }
 
     btn.disabled = true;
-    btn.textContent = 'Auditing Claim with RAG...';
+    btn.innerHTML = `<span class="spinner-sm"></span> <span>Verifying Claim Against Standards...</span>`;
 
     try {
       const res = await fetch('/api/audit/claim', {
@@ -1015,11 +1023,14 @@ function setupClaimTester() {
       const data = await res.json();
       displayClaimAuditResult(data, text);
     } catch (err) {
-      alert(`Claim audit failed: ${err.message}`);
+      alert(`Claim verification failed: ${err.message}`);
       console.error(err);
     } finally {
       btn.disabled = false;
-      btn.textContent = '🔎 Audit Claim with Agentic RAG';
+      btn.innerHTML = `
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <span>Verify Disclosure Against Standards</span>
+      `;
     }
   });
 }
@@ -1037,7 +1048,7 @@ function displayClaimAuditResult(auditResult, rawText) {
   // Badge & score
   const badgeEl = document.getElementById('testResultBadge');
   badgeEl.className = `badge-${cls}`;
-  badgeEl.textContent = cls === 'legit' ? '🟢 LEGIT' : (cls === 'grey' ? '🟡 GREY ZONE' : '🔴 BULLSHIT');
+  badgeEl.textContent = cls === 'legit' ? 'VERIFIED' : (cls === 'grey' ? 'INCOMPLETE' : 'HIGH RISK');
   document.getElementById('testResultScore').textContent = `Risk ${risk.toFixed(0)}%`;
 
   // Matched standard
@@ -1045,11 +1056,11 @@ function displayClaimAuditResult(auditResult, rawText) {
 
   // Quote & Verdict
   document.getElementById('testResultQuote').textContent = `"${rawText}"`;
-  document.getElementById('testResultVerdict').innerHTML = `<b>⚖️ Regulatory Verdict:</b> ${claim.audit_justification || 'Analyzed.'}`;
+  document.getElementById('testResultVerdict').innerHTML = `<b>Audit Finding &amp; Assessment:</b> ${claim.audit_justification || 'Analyzed against regulatory criteria.'}`;
 
   // 4 Pillars
   document.getElementById('testPillarQuant').textContent = `${(pScores.quantification || 50).toFixed(0)}%`;
-  document.getElementById('testPillarQuantDesc').textContent = pRats.quantification || 'Metrics';
+  document.getElementById('testPillarQuantDesc').textContent = pRats.quantification || 'Physical metrics';
 
   document.getElementById('testPillarRoadmap').textContent = `${(pScores.trajectory || 50).toFixed(0)}%`;
   document.getElementById('testPillarRoadmapDesc').textContent = pRats.trajectory || 'Baselines & interim targets';
@@ -1073,7 +1084,7 @@ function displayClaimAuditResult(auditResult, rawText) {
       p.innerHTML = `
         <div class="passage-title">
           <span>[${r.chunk.tag}] ${r.chunk.title}</span>
-          <span style="font-family: var(--font-mono); color: #10b981;">Sim: ${r.score.toFixed(3)}</span>
+          <span style="font-family: var(--font-mono); color: #34d399;">Sim: ${r.score.toFixed(3)}</span>
         </div>
         <div class="passage-body">${r.chunk.body}</div>
       `;

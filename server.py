@@ -346,5 +346,5 @@ if __name__ == "__main__":
     import uvicorn
     port = int(os.environ.get("PORT", 8000))
     host = os.environ.get("HOST", "0.0.0.0")
-    print(f"\n🌿 GreenWash-Screener FastAPI Server starting on http://{host}:{port} ...")
+    print(f"\n[GreenWash-Screener] FastAPI Server starting on http://{host}:{port} ...")
     uvicorn.run("server:app", host=host, port=port, reload=False)
